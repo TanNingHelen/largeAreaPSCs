@@ -1,4 +1,4 @@
 # Ignore TIFF image files
-#*.tif
-#*.tiff
+*.tif
+*.tiff
 .DS_Store
