@@ -1,0 +1,28 @@
+﻿Record_Index,Record_ID,Original_PCE,Feature,Rank,Original_Value_Encoded,Original_Value_Decoded,Recommended_Value_Encoded,Recommended_Value_Decoded,Display_Value,Predicted_PCE,Improvement,Raw_Offset,Adjusted_Improvement,Improvement_Type,Data_Count,Confidence,Value_Mean_PCE,Value_PCE_Std
+1,Record_1,22.81,ETL_Passivator,1,0,0,33,PEACl,PEACl (33),23.81,1.0,5.8151,1.0,adjusted,3,6,22.1567,0.5014
+1,Record_1,22.81,ETL_Passivator,2,0,0,8,DMDO,DMDO (8),23.81,1.0,3.3984,1.0,adjusted,1,2,19.74,
+1,Record_1,22.81,ETL_Passivator,3,0,0,36,PMI-F-PMI,PMI-F-PMI (36),23.81,1.0,2.3884,1.0,adjusted,1,2,18.73,
+1,Record_1,22.81,HTL_Passivator,1,32,PEAI,17,DABr,DABr (17),23.81,1.0,1.5584,1.0,adjusted,2,4,17.9,3.677
+1,Record_1,22.81,HTL_Passivator,2,32,PEAI,23,FABP,FABP (23),23.81,1.0,2.9384,1.0,adjusted,1,2,19.28,
+1,Record_1,22.81,HTL_Passivator,3,32,PEAI,4,4HPA,4HPA (4),23.81,1.0,2.9184,1.0,adjusted,1,2,19.26,
+1,Record_1,22.81,Precursor_Solution_Addictive,1,89,PbI2+BNCl,67,MACl+[Bcmim]Cl,MACl+[Bcmim]Cl (67),23.81,1.0,6.6284,1.0,adjusted,1,2,22.97,
+1,Record_1,22.81,Precursor_Solution_Addictive,2,89,PbI2+BNCl,65,MACl+PbI2,MACl+PbI2 (65),23.81,1.0,2.2584,1.0,adjusted,3,6,18.6,2.8688
+1,Record_1,22.81,Precursor_Solution_Addictive,3,89,PbI2+BNCl,10,CBH+n-dodecylammonium iodide+LP+MAH2PO2+p-F-PEAI,CBH+n-dodecylammonium iodide+LP+MAH2PO2+p-F-PEAI (10),23.81,1.0,2.9084,1.0,adjusted,2,4,19.25,0.0707
+2,Record_2,22.47,ETL_Passivator,1,0,0,33,PEACl,PEACl (33),23.47,1.0,5.8151,1.0,adjusted,3,6,22.1567,0.5014
+2,Record_2,22.47,ETL_Passivator,2,0,0,8,DMDO,DMDO (8),23.47,1.0,3.3984,1.0,adjusted,1,2,19.74,
+2,Record_2,22.47,ETL_Passivator,3,0,0,36,PMI-F-PMI,PMI-F-PMI (36),23.47,1.0,2.3884,1.0,adjusted,1,2,18.73,
+2,Record_2,22.47,HTL_Passivator,1,19,DPA-TFA,32,PEAI,PEAI (32),23.47,1.0,4.0384,1.0,adjusted,13,26,20.38,2.3529
+2,Record_2,22.47,HTL_Passivator,2,19,DPA-TFA,17,DABr,DABr (17),23.47,1.0,1.5584,1.0,adjusted,2,4,17.9,3.677
+2,Record_2,22.47,HTL_Passivator,3,19,DPA-TFA,23,FABP,FABP (23),23.47,1.0,2.9384,1.0,adjusted,1,2,19.28,
+2,Record_2,22.47,Precursor_Solution_Addictive,1,53,MACl,67,MACl+[Bcmim]Cl,MACl+[Bcmim]Cl (67),23.47,1.0,6.6284,1.0,adjusted,1,2,22.97,
+2,Record_2,22.47,Precursor_Solution_Addictive,2,53,MACl,65,MACl+PbI2,MACl+PbI2 (65),23.47,1.0,2.2584,1.0,adjusted,3,6,18.6,2.8688
+2,Record_2,22.47,Precursor_Solution_Addictive,3,53,MACl,10,CBH+n-dodecylammonium iodide+LP+MAH2PO2+p-F-PEAI,CBH+n-dodecylammonium iodide+LP+MAH2PO2+p-F-PEAI (10),23.47,1.0,2.9084,1.0,adjusted,2,4,19.25,0.0707
+3,Record_3,21.83,ETL_Passivator,1,0,0,33,PEACl,PEACl (33),22.83,1.0,5.8151,1.0,adjusted,3,6,22.1567,0.5014
+3,Record_3,21.83,ETL_Passivator,2,0,0,8,DMDO,DMDO (8),22.83,1.0,3.3984,1.0,adjusted,1,2,19.74,
+3,Record_3,21.83,ETL_Passivator,3,0,0,36,PMI-F-PMI,PMI-F-PMI (36),22.83,1.0,2.3884,1.0,adjusted,1,2,18.73,
+3,Record_3,21.83,HTL_Passivator,1,1,0,32,PEAI,PEAI (32),22.83,1.0,4.0384,1.0,adjusted,13,26,20.38,2.3529
+3,Record_3,21.83,HTL_Passivator,2,1,0,17,DABr,DABr (17),22.83,1.0,1.5584,1.0,adjusted,2,4,17.9,3.677
+3,Record_3,21.83,HTL_Passivator,3,1,0,23,FABP,FABP (23),22.83,1.0,2.9384,1.0,adjusted,1,2,19.28,
+3,Record_3,21.83,Precursor_Solution_Addictive,1,53,MACl,67,MACl+[Bcmim]Cl,MACl+[Bcmim]Cl (67),22.83,1.0,6.6284,1.0,adjusted,1,2,22.97,
+3,Record_3,21.83,Precursor_Solution_Addictive,2,53,MACl,65,MACl+PbI2,MACl+PbI2 (65),22.83,1.0,2.2584,1.0,adjusted,3,6,18.6,2.8688
+3,Record_3,21.83,Precursor_Solution_Addictive,3,53,MACl,10,CBH+n-dodecylammonium iodide+LP+MAH2PO2+p-F-PEAI,CBH+n-dodecylammonium iodide+LP+MAH2PO2+p-F-PEAI (10),22.83,1.0,2.9084,1.0,adjusted,2,4,19.25,0.0707

@@ -1,0 +1,257 @@
+[2025-10-31 20:57:12] Loading data...
+[2025-10-31 20:57:12] Training new XGBoost model...
+[2025-10-31 20:57:12] Starting grid search...
+[2025-10-31 20:57:57] 
+Best Parameters: {'colsample_bytree': 1.0, 'gamma': 0, 'learning_rate': 0.05, 'max_depth': 6, 'n_estimators': 100, 'reg_alpha': 0.1, 'reg_lambda': 0, 'subsample': 0.8}
+[2025-10-31 20:57:57] Best CV R²: 0.5635
+[2025-10-31 20:57:57] 
+=== Training Set Metrics ===
+[2025-10-31 20:57:57] R: 0.9926
+[2025-10-31 20:57:57] R²: 0.9813
+[2025-10-31 20:57:57] MAE: 0.5184
+[2025-10-31 20:57:57] RMSE: 0.6382
+[2025-10-31 20:57:57] 
+=== Test Set Metrics ===
+[2025-10-31 20:57:57] R: 0.8674
+[2025-10-31 20:57:57] R²: 0.7523
+[2025-10-31 20:57:57] MAE: 1.8208
+[2025-10-31 20:57:57] RMSE: 2.3815
+[2025-10-31 20:57:58] 
+Model saved to: models/best_xgb_model.pkl
+[2025-10-31 20:57:58] Feature importance plot saved to: picture_predict/XGB_feature_importance.png
+[2025-10-31 20:57:58] Prediction plots saved to:
+[2025-10-31 20:57:58] - img/XGB_PCE_prediction.png (if myscatterplot succeeded)
+[2025-10-31 20:57:58] - picture_predict/XGB_PCE_prediction.png (fallback plot)
+[2025-11-01 06:17:53] Loading data...
+[2025-11-01 06:17:54] Found saved model, attempting to load...
+[2025-11-01 06:17:54] Model validation passed. Test prediction sample: 18.81502342224121
+[2025-11-01 06:17:54] 
+=== Training Set Metrics ===
+[2025-11-01 06:17:54] R: 0.9926
+[2025-11-01 06:17:54] R²: 0.9813
+[2025-11-01 06:17:54] MAE: 0.5184
+[2025-11-01 06:17:54] RMSE: 0.6382
+[2025-11-01 06:17:54] 
+=== Test Set Metrics ===
+[2025-11-01 06:17:54] R: 0.8674
+[2025-11-01 06:17:54] R²: 0.7523
+[2025-11-01 06:17:54] MAE: 1.8208
+[2025-11-01 06:17:54] RMSE: 2.3815
+[2025-11-01 06:17:54] 
+Model saved to: models/best_xgb_model.pkl
+[2025-11-01 06:17:54] Feature importance plot saved to: picture_predict/XGB_feature_importance.png
+[2025-11-01 06:17:54] Prediction plots saved to:
+[2025-11-01 06:17:54] - img/XGB_PCE_prediction.png (if myscatterplot succeeded)
+[2025-11-01 06:17:54] - picture_predict/XGB_PCE_prediction.png (fallback plot)
+[2025-11-05 20:11:23] Loading data...
+[2025-11-05 20:11:23] Training new XGBoost model...
+[2025-11-05 20:11:23] Starting grid search...
+[2025-11-05 20:12:06] 
+Best Parameters: {'colsample_bytree': 0.8, 'gamma': 0, 'learning_rate': 0.05, 'max_depth': 6, 'n_estimators': 200, 'reg_alpha': 0, 'reg_lambda': 0.1, 'subsample': 0.8}
+[2025-11-05 20:12:06] Best CV R²: 0.5603
+[2025-11-05 20:12:06] 
+=== Training Set Metrics ===
+[2025-11-05 20:12:06] R: 0.9983
+[2025-11-05 20:12:06] R²: 0.9960
+[2025-11-05 20:12:06] MAE: 0.2348
+[2025-11-05 20:12:06] RMSE: 0.2940
+[2025-11-05 20:12:06] 
+=== Test Set Metrics ===
+[2025-11-05 20:12:06] R: 0.8739
+[2025-11-05 20:12:06] R²: 0.7611
+[2025-11-05 20:12:06] MAE: 1.8147
+[2025-11-05 20:12:06] RMSE: 2.3385
+[2025-11-05 20:12:07] 
+Model saved to: models/best_xgb_model.pkl
+[2025-11-05 20:12:07] Feature importance plot saved to: picture_predict/XGB_feature_importance.png
+[2025-11-05 20:12:07] Prediction plots saved to:
+[2025-11-05 20:12:07] - img/XGB_PCE_prediction.png (if myscatterplot succeeded)
+[2025-11-05 20:12:07] - picture_predict/XGB_PCE_prediction.png (fallback plot)
+[2025-12-16 22:44:20] Loading data...
+[2025-12-16 22:44:21] Found saved model, attempting to load...
+[2025-12-16 22:44:21] Model validation passed. Test prediction sample: 14.929194450378418
+[2025-12-16 22:44:21] 
+=== Training Set Metrics ===
+[2025-12-16 22:44:21] R: 0.9781
+[2025-12-16 22:44:21] R²: 0.9498
+[2025-12-16 22:44:21] MAE: 0.7044
+[2025-12-16 22:44:21] RMSE: 1.0686
+[2025-12-16 22:44:21] 
+=== Test Set Metrics ===
+[2025-12-16 22:44:21] R: 0.9169
+[2025-12-16 22:44:21] R²: 0.8406
+[2025-12-16 22:44:21] MAE: 1.1984
+[2025-12-16 22:44:21] RMSE: 1.8295
+[2025-12-16 22:44:21] 
+Model saved to: models/best_xgb_model.pkl
+[2025-12-16 22:44:21] Feature importance plot saved to: picture_predict/XGB_feature_importance.png
+[2025-12-16 22:44:21] Prediction plots saved to:
+[2025-12-16 22:44:21] - img/XGB_PCE_prediction.png (if myscatterplot succeeded)
+[2025-12-16 22:44:21] - picture_predict/XGB_PCE_prediction.png (fallback plot)
+[2025-12-16 22:53:25] Loading data...
+[2025-12-16 22:53:25] Training new XGBoost model...
+[2025-12-16 22:53:25] Starting grid search...
+[2025-12-16 22:54:09] 
+Best Parameters: {'colsample_bytree': 0.8, 'gamma': 0, 'learning_rate': 0.05, 'max_depth': 6, 'n_estimators': 200, 'reg_alpha': 0, 'reg_lambda': 0, 'subsample': 0.8}
+[2025-12-16 22:54:09] Best CV R²: 0.5776
+[2025-12-16 22:54:09] 
+=== Training Set Metrics ===
+[2025-12-16 22:54:09] R: 0.9982
+[2025-12-16 22:54:09] R²: 0.9958
+[2025-12-16 22:54:09] MAE: 0.2428
+[2025-12-16 22:54:09] RMSE: 0.3012
+[2025-12-16 22:54:09] 
+=== Test Set Metrics ===
+[2025-12-16 22:54:09] R: 0.8832
+[2025-12-16 22:54:09] R²: 0.7630
+[2025-12-16 22:54:09] MAE: 1.8611
+[2025-12-16 22:54:09] RMSE: 2.5141
+[2025-12-16 22:54:10] 
+Model saved to: models/best_xgb_model.pkl
+[2025-12-16 22:54:10] Feature importance plot saved to: picture_predict/XGB_feature_importance.png
+[2025-12-16 22:54:10] Prediction plots saved to:
+[2025-12-16 22:54:10] - img/XGB_PCE_prediction.png (if myscatterplot succeeded)
+[2025-12-16 22:54:10] - picture_predict/XGB_PCE_prediction.png (fallback plot)
+[2025-12-20 01:07:52] Loading data...
+[2025-12-20 01:07:53] Found saved model, attempting to load...
+[2025-12-20 01:07:53] Model validation passed. Test prediction sample: 12.691967964172363
+[2025-12-20 01:07:53] 
+=== Training Set Metrics ===
+[2025-12-20 01:07:53] R: 0.9982
+[2025-12-20 01:07:53] R²: 0.9958
+[2025-12-20 01:07:53] MAE: 0.2431
+[2025-12-20 01:07:53] RMSE: 0.3014
+[2025-12-20 01:07:53] 
+=== Test Set Metrics ===
+[2025-12-20 01:07:53] R: 0.8832
+[2025-12-20 01:07:53] R²: 0.7630
+[2025-12-20 01:07:53] MAE: 1.8611
+[2025-12-20 01:07:53] RMSE: 2.5141
+[2025-12-20 01:07:53] 
+Model saved to: models/best_xgb_model.pkl
+[2025-12-20 01:07:53] Feature importance plot saved to: picture_predict/XGB_feature_importance.png
+[2025-12-20 01:07:53] Prediction plots saved to:
+[2025-12-20 01:07:53] - img/XGB_PCE_prediction.png (if myscatterplot succeeded)
+[2025-12-20 01:07:53] - picture_predict/XGB_PCE_prediction.png (fallback plot)
+[2025-12-20 07:29:34] Loading data...
+[2025-12-20 07:29:34] Found saved model, attempting to load...
+[2025-12-20 07:29:34] Model validation passed. Test prediction sample: 12.691967964172363
+[2025-12-20 07:29:34] 
+=== Training Set Metrics ===
+[2025-12-20 07:29:34] R: 0.9982
+[2025-12-20 07:29:34] R²: 0.9958
+[2025-12-20 07:29:34] MAE: 0.2431
+[2025-12-20 07:29:34] RMSE: 0.3014
+[2025-12-20 07:29:34] 
+=== Test Set Metrics ===
+[2025-12-20 07:29:34] R: 0.8832
+[2025-12-20 07:29:34] R²: 0.7630
+[2025-12-20 07:29:34] MAE: 1.8611
+[2025-12-20 07:29:34] RMSE: 2.5141
+[2025-12-20 07:29:34] 
+============================================================
+[2025-12-20 07:29:34] XGBOOST MODEL DETAILED PARAMETERS
+[2025-12-20 07:29:34] ============================================================
+[2025-12-20 07:29:34] 
+=== 核心超参数 ===
+[2025-12-20 07:29:34] n_estimators: 200
+[2025-12-20 07:29:34] max_depth: 6
+[2025-12-20 07:29:34] learning_rate: 0.05
+[2025-12-20 07:29:34] subsample: 0.8
+[2025-12-20 07:29:34] colsample_bytree: 0.8
+[2025-12-20 07:29:34] gamma: 0
+[2025-12-20 07:29:34] reg_alpha: 0
+[2025-12-20 07:29:34] reg_lambda: 0
+[2025-12-20 07:29:34] 
+=== 训练控制参数 ===
+[2025-12-20 07:29:34] random_state: 42
+[2025-12-20 07:29:34] n_jobs: -1
+[2025-12-20 07:29:34] booster: None
+[2025-12-20 07:29:34] objective: reg:squarederror
+[2025-12-20 07:29:34] base_score: None
+[2025-12-20 07:29:34] 
+=== 树结构参数 ===
+[2025-12-20 07:29:34] max_leaves: None
+[2025-12-20 07:29:34] max_bin: None
+[2025-12-20 07:29:34] tree_method: None
+[2025-12-20 07:29:34] grow_policy: None
+[2025-12-20 07:29:34] 
+=== 模型统计信息 ===
+[2025-12-20 07:29:34] 模型保存路径: models/best_xgb_model.pkl
+[2025-12-20 07:29:34] 树的棵数 (n_estimators): 200
+[2025-12-20 07:29:34] 输入特征数量: 56
+[2025-12-20 07:29:34] 特征名称: ['Structure', 'HTL', 'HTL-2', 'HTL_Passivator', 'HTL-Addictive', 'ETL', 'ETL-2', 'ETL_Passivator', 'ETL-Addictive', 'Metal_Electrode', 'Glass', 'Active_Area', 'Precursor_Solution', 'Precursor_Solution_Addictive', 'Deposition_Method', 'Antisolvent', 'Annealing_Temperature1', 'Annealing_Time1', 'Annealing_Temperature2', 'Annealing_Time2', 'P1Wavelength(nm)', 'P2Wavelength(nm)', 'P3Wavelength(nm)', 'total_scribing_line_width(μm)', 'P1Width(μm)', 'P2Width(μm)', 'P3Width(μm)', 'GFF', 'Type', 'submodule_number', 'P1Scan_Velocity(mm/s)', 'P1etching_frequency(kHz)', 'P1Spot Size(μm)', 'P1etching_Power(W)', 'P1etching_Power_percentage(%)', 'P2Scan_Velocity', 'P2etching_frequency(kHz)', 'P2Spot Size(μm)', 'P2etching_Power(W)', 'P2etching_Power_percentage(%)', 'P3Scan_Velocity', 'P3etching_frequency(kHz)', 'P3Spot Size(μm)', 'P3etching_Power(W)', 'P3etching_Power_percentage(%)', 'P1_P2Scribing_Spacing(μm)', 'P2_P3Scribing_Spacing(μm)', 'brand', 'Cs', 'MA', 'FA', 'Pb', 'I', 'Br', 'Cl', 'Bandgap']
+[2025-12-20 07:29:34] 
+=== 特征重要性 (前10个) ===
+[2025-12-20 07:29:34] 1. FA: 0.146227
+[2025-12-20 07:29:34] 2. MA: 0.125390
+[2025-12-20 07:29:34] 3. Br: 0.065159
+[2025-12-20 07:29:34] 4. P2Scan_Velocity: 0.059520
+[2025-12-20 07:29:34] 5. P2etching_frequency(kHz): 0.044098
+[2025-12-20 07:29:34] 6. P1etching_frequency(kHz): 0.032498
+[2025-12-20 07:29:34] 7. P2_P3Scribing_Spacing(μm): 0.029382
+[2025-12-20 07:29:34] 8. P3etching_frequency(kHz): 0.028054
+[2025-12-20 07:29:34] 9. P2Spot Size(μm): 0.027170
+[2025-12-20 07:29:34] 10. Bandgap: 0.023573
+[2025-12-20 07:29:34] 
+============================================================
+[2025-12-20 07:29:35] 
+Model saved to: models/best_xgb_model.pkl
+[2025-12-20 07:29:35] Feature importance plot saved to: picture_predict/XGB_feature_importance.png
+[2025-12-20 07:29:35] Prediction plots saved to:
+[2025-12-20 07:29:35] - img/XGB_PCE_prediction.png (if myscatterplot succeeded)
+[2025-12-20 07:29:35] - picture_predict/XGB_PCE_prediction.png (fallback plot)
+[2025-12-20 07:31:24] Loading data...
+[2025-12-20 07:31:24] Found saved model, attempting to load...
+[2025-12-20 07:31:24] Model validation passed. Test prediction sample: 12.691967964172363
+[2025-12-20 07:31:24] 
+=== Training Set Metrics ===
+[2025-12-20 07:31:24] R: 0.9982
+[2025-12-20 07:31:24] R²: 0.9958
+[2025-12-20 07:31:24] MAE: 0.2431
+[2025-12-20 07:31:24] RMSE: 0.3014
+[2025-12-20 07:31:24] 
+=== Test Set Metrics ===
+[2025-12-20 07:31:24] R: 0.8832
+[2025-12-20 07:31:24] R²: 0.7630
+[2025-12-20 07:31:24] MAE: 1.8611
+[2025-12-20 07:31:24] RMSE: 2.5141
+[2025-12-20 07:31:24] 
+============================================================
+[2025-12-20 07:31:24] XGBOOST MODEL DETAILED PARAMETERS
+[2025-12-20 07:31:24] ============================================================
+[2025-12-20 07:31:24] 
+=== 核心超参数 ===
+[2025-12-20 07:31:24] n_estimators: 200
+[2025-12-20 07:31:24] max_depth: 6
+[2025-12-20 07:31:24] learning_rate: 0.05
+[2025-12-20 07:31:24] subsample: 0.8
+[2025-12-20 07:31:24] colsample_bytree: 0.8
+[2025-12-20 07:31:24] gamma: 0
+[2025-12-20 07:31:24] reg_alpha: 0
+[2025-12-20 07:31:24] reg_lambda: 0
+[2025-12-20 07:31:24] 
+=== 训练控制参数 ===
+[2025-12-20 07:31:24] random_state: 42
+[2025-12-20 07:31:24] n_jobs: -1
+[2025-12-20 07:31:24] booster: None
+[2025-12-20 07:31:24] objective: reg:squarederror
+[2025-12-20 07:31:24] base_score: None
+[2025-12-20 07:31:24] 
+=== 树结构参数 ===
+[2025-12-20 07:31:24] max_leaves: None
+[2025-12-20 07:31:24] max_bin: None
+[2025-12-20 07:31:24] tree_method: None
+[2025-12-20 07:31:24] grow_policy: None
+[2025-12-20 07:31:24] 
+=== 模型统计信息 ===
+[2025-12-20 07:31:24] 模型保存路径: models/best_xgb_model.pkl
+[2025-12-20 07:31:24] 树的棵数 (n_estimators): 200
+[2025-12-20 07:31:24] 
+============================================================
+[2025-12-20 07:31:24] 
+Model saved to: models/best_xgb_model.pkl
+[2025-12-20 07:31:24] Feature importance plot saved to: picture_predict/XGB_feature_importance.png
+[2025-12-20 07:31:24] Prediction plots saved to:
+[2025-12-20 07:31:24] - img/XGB_PCE_prediction.png (if myscatterplot succeeded)
+[2025-12-20 07:31:24] - picture_predict/XGB_PCE_prediction.png (fallback plot)

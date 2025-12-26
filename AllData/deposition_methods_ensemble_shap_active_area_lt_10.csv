@@ -1,0 +1,169 @@
+﻿Deposition_Method,Feature,SHAP_Importance,Data_Size
+slot die-coating,Structure,0.06823148,6
+slot die-coating,HTL,0.12515064,6
+slot die-coating,HTL-2,0.041965496,6
+slot die-coating,HTL_Passivator,0.2360266,6
+slot die-coating,HTL-Addictive,0.073134944,6
+slot die-coating,ETL,0.21771024,6
+slot die-coating,ETL-2,0.16991644,6
+slot die-coating,ETL_Passivator,0.21088628,6
+slot die-coating,ETL-Addictive,0.024748154,6
+slot die-coating,Metal_Electrode,0.0684687,6
+slot die-coating,Glass,0.10409927,6
+slot die-coating,Active_Area,0.7085767,6
+slot die-coating,Precursor_Solution,0.15009408,6
+slot die-coating,Precursor_Solution_Addictive,0.13588427,6
+slot die-coating,Deposition_Method,0.008097764,6
+slot die-coating,Antisolvent,0.03839972,6
+slot die-coating,Annealing_Temperature1,0.16026868,6
+slot die-coating,Annealing_Time1,0.21889798,6
+slot die-coating,Annealing_Temperature2,0.03314792,6
+slot die-coating,Annealing_Time2,0.011637122,6
+slot die-coating,P1Wavelength(nm),0.012491208,6
+slot die-coating,P2Wavelength(nm),0.04003155,6
+slot die-coating,P3Wavelength(nm),0.030573308,6
+slot die-coating,total_scribing_line_width(μm),0.13721965,6
+slot die-coating,P1Width(μm),0.03859618,6
+slot die-coating,P2Width(μm),0.013284848,6
+slot die-coating,P3Width(μm),0.052678153,6
+slot die-coating,GFF,0.31905642,6
+slot die-coating,Type,0.103688635,6
+slot die-coating,submodule_number,0.37652627,6
+slot die-coating,P1Scan_Velocity(mm/s),0.012931255,6
+slot die-coating,P1etching_frequency(kHz),0.025118882,6
+slot die-coating,P1Spot Size(μm),0.010161654,6
+slot die-coating,P1etching_Power(W),0.024257826,6
+slot die-coating,P1etching_Power_percentage(%),0.016778765,6
+slot die-coating,P2Scan_Velocity,0.04621989,6
+slot die-coating,P2etching_frequency(kHz),0.003586756,6
+slot die-coating,P2Spot Size(μm),0.023585988,6
+slot die-coating,P2etching_Power(W),0.019855952,6
+slot die-coating,P2etching_Power_percentage(%),0.069326095,6
+slot die-coating,P3Scan_Velocity,0.012725015,6
+slot die-coating,P3etching_frequency(kHz),0.0060577863,6
+slot die-coating,P3Spot Size(μm),0.004302205,6
+slot die-coating,P3etching_Power(W),0.0635018,6
+slot die-coating,P3etching_Power_percentage(%),0.014109931,6
+slot die-coating,P1_P2Scribing_Spacing(μm),0.0062673683,6
+slot die-coating,P2_P3Scribing_Spacing(μm),0.0256446,6
+slot die-coating,brand,0.18123834,6
+slot die-coating,Cs,0.39265266,6
+slot die-coating,MA,0.59155107,6
+slot die-coating,FA,0.9124461,6
+slot die-coating,Pb,0.0,6
+slot die-coating,I,0.028924512,6
+slot die-coating,Br,0.16899656,6
+slot die-coating,Cl,0.010794197,6
+slot die-coating,Bandgap,0.26544726,6
+spin-coating,Structure,0.063593,46
+spin-coating,HTL,0.09679357,46
+spin-coating,HTL-2,0.05270668,46
+spin-coating,HTL_Passivator,0.20032352,46
+spin-coating,HTL-Addictive,0.04913416,46
+spin-coating,ETL,0.22555903,46
+spin-coating,ETL-2,0.22652103,46
+spin-coating,ETL_Passivator,0.29258272,46
+spin-coating,ETL-Addictive,0.0540745,46
+spin-coating,Metal_Electrode,0.062778115,46
+spin-coating,Glass,0.14383964,46
+spin-coating,Active_Area,0.8676632,46
+spin-coating,Precursor_Solution,0.25826138,46
+spin-coating,Precursor_Solution_Addictive,0.10693442,46
+spin-coating,Deposition_Method,0.025232997,46
+spin-coating,Antisolvent,0.024522781,46
+spin-coating,Annealing_Temperature1,0.11324488,46
+spin-coating,Annealing_Time1,0.31261355,46
+spin-coating,Annealing_Temperature2,0.036251776,46
+spin-coating,Annealing_Time2,0.017246826,46
+spin-coating,P1Wavelength(nm),0.023071434,46
+spin-coating,P2Wavelength(nm),0.039358646,46
+spin-coating,P3Wavelength(nm),0.047250707,46
+spin-coating,total_scribing_line_width(μm),0.17993355,46
+spin-coating,P1Width(μm),0.07777746,46
+spin-coating,P2Width(μm),0.02276589,46
+spin-coating,P3Width(μm),0.05463743,46
+spin-coating,GFF,0.5814123,46
+spin-coating,Type,0.14015204,46
+spin-coating,submodule_number,0.32116973,46
+spin-coating,P1Scan_Velocity(mm/s),0.028216733,46
+spin-coating,P1etching_frequency(kHz),0.025198221,46
+spin-coating,P1Spot Size(μm),0.00774938,46
+spin-coating,P1etching_Power(W),0.021402907,46
+spin-coating,P1etching_Power_percentage(%),0.008596097,46
+spin-coating,P2Scan_Velocity,0.026295476,46
+spin-coating,P2etching_frequency(kHz),0.0037948615,46
+spin-coating,P2Spot Size(μm),0.020076575,46
+spin-coating,P2etching_Power(W),0.024122808,46
+spin-coating,P2etching_Power_percentage(%),0.018414741,46
+spin-coating,P3Scan_Velocity,0.009615954,46
+spin-coating,P3etching_frequency(kHz),0.014283797,46
+spin-coating,P3Spot Size(μm),0.003556931,46
+spin-coating,P3etching_Power(W),0.0672412,46
+spin-coating,P3etching_Power_percentage(%),0.004316261,46
+spin-coating,P1_P2Scribing_Spacing(μm),0.010723217,46
+spin-coating,P2_P3Scribing_Spacing(μm),0.028024966,46
+spin-coating,brand,0.23717424,46
+spin-coating,Cs,0.11918773,46
+spin-coating,MA,0.8509912,46
+spin-coating,FA,1.3121947,46
+spin-coating,Pb,0.0,46
+spin-coating,I,0.038058586,46
+spin-coating,Br,0.25325885,46
+spin-coating,Cl,0.02853002,46
+spin-coating,Bandgap,0.35882184,46
+blade-coating,Structure,0.070846386,11
+blade-coating,HTL,0.13595876,11
+blade-coating,HTL-2,0.06689317,11
+blade-coating,HTL_Passivator,0.13050395,11
+blade-coating,HTL-Addictive,0.05356848,11
+blade-coating,ETL,0.24965873,11
+blade-coating,ETL-2,0.2698108,11
+blade-coating,ETL_Passivator,0.108456925,11
+blade-coating,ETL-Addictive,0.024608193,11
+blade-coating,Metal_Electrode,0.06611883,11
+blade-coating,Glass,0.08089599,11
+blade-coating,Active_Area,0.32942984,11
+blade-coating,Precursor_Solution,0.29140088,11
+blade-coating,Precursor_Solution_Addictive,0.057342943,11
+blade-coating,Deposition_Method,0.018162554,11
+blade-coating,Antisolvent,0.011446654,11
+blade-coating,Annealing_Temperature1,0.16137843,11
+blade-coating,Annealing_Time1,0.0980434,11
+blade-coating,Annealing_Temperature2,0.03806278,11
+blade-coating,Annealing_Time2,0.008911569,11
+blade-coating,P1Wavelength(nm),0.025248282,11
+blade-coating,P2Wavelength(nm),0.03379108,11
+blade-coating,P3Wavelength(nm),0.035819966,11
+blade-coating,total_scribing_line_width(μm),0.25908762,11
+blade-coating,P1Width(μm),0.119427174,11
+blade-coating,P2Width(μm),0.032846544,11
+blade-coating,P3Width(μm),0.09981967,11
+blade-coating,GFF,0.9274283,11
+blade-coating,Type,0.041475743,11
+blade-coating,submodule_number,0.14270379,11
+blade-coating,P1Scan_Velocity(mm/s),0.0052497946,11
+blade-coating,P1etching_frequency(kHz),0.023481678,11
+blade-coating,P1Spot Size(μm),0.008586365,11
+blade-coating,P1etching_Power(W),0.02209551,11
+blade-coating,P1etching_Power_percentage(%),0.009763245,11
+blade-coating,P2Scan_Velocity,0.02996125,11
+blade-coating,P2etching_frequency(kHz),0.0040723,11
+blade-coating,P2Spot Size(μm),0.018537076,11
+blade-coating,P2etching_Power(W),0.025284082,11
+blade-coating,P2etching_Power_percentage(%),0.019858496,11
+blade-coating,P3Scan_Velocity,0.009870913,11
+blade-coating,P3etching_frequency(kHz),0.006426963,11
+blade-coating,P3Spot Size(μm),0.0040175645,11
+blade-coating,P3etching_Power(W),0.069435805,11
+blade-coating,P3etching_Power_percentage(%),0.0045104795,11
+blade-coating,P1_P2Scribing_Spacing(μm),0.019089693,11
+blade-coating,P2_P3Scribing_Spacing(μm),0.068260595,11
+blade-coating,brand,0.17290948,11
+blade-coating,Cs,0.30068296,11
+blade-coating,MA,0.6942265,11
+blade-coating,FA,1.1213336,11
+blade-coating,Pb,0.0,11
+blade-coating,I,0.0235129,11
+blade-coating,Br,0.15307087,11
+blade-coating,Cl,0.017533172,11
+blade-coating,Bandgap,0.27881148,11

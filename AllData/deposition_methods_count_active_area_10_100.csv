@@ -1,0 +1,15 @@
+Encoded_Method,Count,Method_Name
+12,178,spin-coating
+5,80,blade-coating
+11,38,slot die-coating
+7,14,evaporation
+6,6,drop casting
+1,5,D-bar coating
+9,5,evaporation+spin-coating
+0,4,Chemical vapor  deposition
+14,2,spray-coating
+10,2,pressure application
+15,2,spray-coating+Chemical vapor  deposition
+13,1,spin-coating + spray-coating
+8,1,evaporation+spary-coating
+3,1,Evaporation+blade-coating

@@ -1,0 +1,8 @@
+Encoded_Method,Count,Method_Name
+12,46,spin-coating
+5,11,blade-coating
+11,6,slot die-coating
+7,6,evaporation
+15,2,spray-coating+Chemical vapor  deposition
+9,1,evaporation+spin-coating
+14,1,spray-coating

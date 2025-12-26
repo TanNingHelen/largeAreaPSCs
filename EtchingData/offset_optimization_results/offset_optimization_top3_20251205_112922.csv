@@ -1,0 +1,28 @@
+﻿Record_Index,Record_ID,Original_PCE,Feature,Rank,Original_Value_Encoded,Original_Value_Decoded,Recommended_Value_Encoded,Recommended_Value_Decoded,Display_Value,Predicted_PCE,Improvement,Offset_Value,Data_Count,Confidence,Value_Mean_PCE,Value_PCE_Std
+1,Record_1,22.81,ETL_Passivator,1,0,0,44,piperazinium iodide,piperazinium iodide (44),29.9418,7.1318,7.1318,3,6,23.4733,0.5787
+1,Record_1,22.81,ETL_Passivator,2,0,0,37,TMACL,TMACL (37),29.2284,6.4184,6.4184,2,4,22.76,0.0
+1,Record_1,22.81,ETL_Passivator,3,0,0,38,VBETS,VBETS (38),28.6684,5.8584,5.8584,1,2,22.2,
+1,Record_1,22.81,HTL_Passivator,1,32,PEAI,36,PTABr,PTABr (36),29.5984,6.7884,6.7884,2,4,23.13,0.297
+1,Record_1,22.81,HTL_Passivator,2,32,PEAI,12,CHEAI,CHEAI (12),28.9284,6.1184,6.1184,1,2,22.46,
+1,Record_1,22.81,HTL_Passivator,3,32,PEAI,29,OAI,OAI (29),28.5934,5.7834,5.7834,2,4,22.125,0.3041
+1,Record_1,22.81,Precursor_Solution_Addictive,1,89,PbI2+BNCl,56,MACl+FAI+CsI,MACl+FAI+CsI (56),30.6384,7.8284,7.8284,1,2,24.17,
+1,Record_1,22.81,Precursor_Solution_Addictive,2,89,PbI2+BNCl,68,MACl+p-F-PEAI,MACl+p-F-PEAI (68),30.0884,7.2784,7.2784,2,4,23.62,0.7354
+1,Record_1,22.81,Precursor_Solution_Addictive,3,89,PbI2+BNCl,79,PHNS+BNAC,PHNS+BNAC (79),29.6484,6.8384,6.8384,1,2,23.18,
+2,Record_2,22.47,ETL_Passivator,1,0,0,44,piperazinium iodide,piperazinium iodide (44),29.6018,7.1318,7.1318,3,6,23.4733,0.5787
+2,Record_2,22.47,ETL_Passivator,2,0,0,37,TMACL,TMACL (37),28.8884,6.4184,6.4184,2,4,22.76,0.0
+2,Record_2,22.47,ETL_Passivator,3,0,0,38,VBETS,VBETS (38),28.3284,5.8584,5.8584,1,2,22.2,
+2,Record_2,22.47,HTL_Passivator,1,19,DPA-TFA,36,PTABr,PTABr (36),29.2584,6.7884,6.7884,2,4,23.13,0.297
+2,Record_2,22.47,HTL_Passivator,2,19,DPA-TFA,12,CHEAI,CHEAI (12),28.5884,6.1184,6.1184,1,2,22.46,
+2,Record_2,22.47,HTL_Passivator,3,19,DPA-TFA,29,OAI,OAI (29),28.2534,5.7834,5.7834,2,4,22.125,0.3041
+2,Record_2,22.47,Precursor_Solution_Addictive,1,53,MACl,56,MACl+FAI+CsI,MACl+FAI+CsI (56),30.2984,7.8284,7.8284,1,2,24.17,
+2,Record_2,22.47,Precursor_Solution_Addictive,2,53,MACl,68,MACl+p-F-PEAI,MACl+p-F-PEAI (68),29.7484,7.2784,7.2784,2,4,23.62,0.7354
+2,Record_2,22.47,Precursor_Solution_Addictive,3,53,MACl,79,PHNS+BNAC,PHNS+BNAC (79),29.3084,6.8384,6.8384,1,2,23.18,
+3,Record_3,21.83,ETL_Passivator,1,0,0,44,piperazinium iodide,piperazinium iodide (44),28.9618,7.1318,7.1318,3,6,23.4733,0.5787
+3,Record_3,21.83,ETL_Passivator,2,0,0,37,TMACL,TMACL (37),28.2484,6.4184,6.4184,2,4,22.76,0.0
+3,Record_3,21.83,ETL_Passivator,3,0,0,38,VBETS,VBETS (38),27.6884,5.8584,5.8584,1,2,22.2,
+3,Record_3,21.83,HTL_Passivator,1,1,0,36,PTABr,PTABr (36),28.6184,6.7884,6.7884,2,4,23.13,0.297
+3,Record_3,21.83,HTL_Passivator,2,1,0,12,CHEAI,CHEAI (12),27.9484,6.1184,6.1184,1,2,22.46,
+3,Record_3,21.83,HTL_Passivator,3,1,0,29,OAI,OAI (29),27.6134,5.7834,5.7834,2,4,22.125,0.3041
+3,Record_3,21.83,Precursor_Solution_Addictive,1,53,MACl,56,MACl+FAI+CsI,MACl+FAI+CsI (56),29.6584,7.8284,7.8284,1,2,24.17,
+3,Record_3,21.83,Precursor_Solution_Addictive,2,53,MACl,68,MACl+p-F-PEAI,MACl+p-F-PEAI (68),29.1084,7.2784,7.2784,2,4,23.62,0.7354
+3,Record_3,21.83,Precursor_Solution_Addictive,3,53,MACl,79,PHNS+BNAC,PHNS+BNAC (79),28.6684,6.8384,6.8384,1,2,23.18,

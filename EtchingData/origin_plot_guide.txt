@@ -1,0 +1,28 @@
+Origin绘图指南：
+1. 矩阵气泡图绘制方法：
+   a. 打开Origin软件
+   b. 导入 correlation_long_format_for_origin.csv 文件
+   c. 选择 Plot > Specialized > Matrix Bubble
+   d. 设置：
+      - X: X_Position
+      - Y: Y_Position
+      - 气泡大小: Abs_Correlation
+      - 气泡颜色: Correlation（正值用暖色，负值用冷色）
+      - 标签: Significance（用于显示*号）
+
+2. 或者使用气泡图数据：
+   a. 导入 bubble_plot_data_for_origin.csv 文件
+   b. 选择 Plot > Symbol > Bubble
+   c. 设置：
+      - X: X_Index
+      - Y: Y_Index
+      - 气泡大小: Abs_Correlation
+      - 气泡颜色: Color_Group（分组颜色）
+      - 标签: Correlation（显示相关系数值）
+
+3. 使用矩阵数据直接绘制：
+   a. 导入 correlation_matrix_for_origin.csv
+   b. 选择 Plot > Specialized > Heat Map
+   c. 可以结合气泡图功能
+
+注意：X_Index 和 Y_Index 是特征的位置索引（1-11），对应 features_list_for_origin.csv 中的特征。

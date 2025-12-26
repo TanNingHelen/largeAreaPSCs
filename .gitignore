@@ -1,0 +1,3 @@
+# Ignore TIFF image files
+*.tif
+*.tiff

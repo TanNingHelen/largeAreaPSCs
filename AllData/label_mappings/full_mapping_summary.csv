@@ -1,0 +1,567 @@
+Feature,Original,Encoded
+Structure,n-i-p,0
+Structure,p-i-n,1
+HTL,0,0
+HTL,2T-NATA,1
+HTL,4PA-spiro,2
+HTL,A-4PADCB,3
+HTL,AI2O3,4
+HTL,CT,5
+HTL,Carbon,6
+HTL,CbzNaph,7
+HTL,EH44,8
+HTL,FTPE-OSMe,9
+HTL,FTPE-ST,10
+HTL,LiCoO₂,11
+HTL,MFGO,12
+HTL,Me-4PACz,13
+HTL,Me-4PACz+MeO-2PACz,14
+HTL,MeO-2PACz,15
+HTL,MoO3 ,16
+HTL,NiMgLiO,17
+HTL,NiOx,18
+HTL,P3HT,19
+HTL,P3HT-COOH,20
+HTL,PEDOT:EVA,21
+HTL,PEDOT:GO,22
+HTL,PEDOT:PSS,23
+HTL,PTAA,24
+HTL,PTZ-FI,25
+HTL,Poly4PACz,26
+HTL,Py3,27
+HTL,SA-BPP,28
+HTL,SRE-NiOx,29
+HTL,Spiro-OMeTAD,30
+HTL,Spiro-TTB,31
+HTL,TAA-tetramer,32
+HTL,TFB,33
+HTL,TPA-PT-C6,34
+HTL,V1366,35
+HTL,hc-PEDOT:PSS,36
+HTL,spiro-Naph,37
+HTL-2, P3HT,0
+HTL-2,0,1
+HTL-2,AI2O3,2
+HTL-2,AL17,3
+HTL-2,BCP,4
+HTL-2,Me-4PACz,5
+HTL-2,MeO-2PACz,6
+HTL-2,MoO3,7
+HTL-2,NiOx,8
+HTL-2,P3HT,9
+HTL-2,PEDOT:EVA,10
+HTL-2,PEDOT：PSS,11
+HTL-2,PFN,12
+HTL-2,PTAA,13
+HTL-2,Ph-4PACz,14
+HTL-2,Poly-4PACz,15
+HTL-2,m-Al2O3,16
+HTL-2,oil-PEDOT:PSS,17
+HTL_Passivator,(CH3)3SI,0
+HTL_Passivator,0,1
+HTL_Passivator,2-Cl-PEAI,2
+HTL_Passivator,2CF3-PMABr,3
+HTL_Passivator,4HPA,4
+HTL_Passivator,4MeO-PEAI,5
+HTL_Passivator,ACBr,6
+HTL_Passivator,Acrylamide,7
+HTL_Passivator,BAAc,8
+HTL_Passivator,BJ-GO,9
+HTL_Passivator,BzA,10
+HTL_Passivator,CF3-Cl-PhABr,11
+HTL_Passivator,CHEAI,12
+HTL_Passivator,CS2,13
+HTL_Passivator,Crown,14
+HTL_Passivator,CsCF3SO3,15
+HTL_Passivator,CsPbBr3,16
+HTL_Passivator,DABr,17
+HTL_Passivator,DOFo,18
+HTL_Passivator,DPA-TFA,19
+HTL_Passivator,EAI/MAI,20
+HTL_Passivator,ES,21
+HTL_Passivator,F-ipr-I,22
+HTL_Passivator,FABP,23
+HTL_Passivator,HTAB,24
+HTL_Passivator,ISO+NEO,25
+HTL_Passivator,MG-PEDOT,26
+HTL_Passivator,MeO-PEAI,27
+HTL_Passivator,MoS2,28
+HTL_Passivator,NMG,29
+HTL_Passivator,OAI,30
+HTL_Passivator,Oam,31
+HTL_Passivator,PEACl,32
+HTL_Passivator,PEAI,33
+HTL_Passivator,PEAI:DIO,34
+HTL_Passivator,PMMA,35
+HTL_Passivator,PTAB,36
+HTL_Passivator,PTABr,37
+HTL_Passivator,PyrPbI3,38
+HTL_Passivator,TPAI,39
+HTL_Passivator,TeDA,40
+HTL_Passivator,Urea,41
+HTL_Passivator,[EMIM]Br,42
+HTL_Passivator,[M4N]BF₄,43
+HTL_Passivator,fMoS2,44
+HTL_Passivator,i-BABr,45
+HTL_Passivator,ipr-i,46
+HTL_Passivator,levodopa,47
+HTL_Passivator,o-PDEAI2,48
+HTL_Passivator,tBAI,49
+HTL-Addictive,0,0
+HTL-Addictive,Arg,1
+HTL-Addictive,BCP,2
+HTL-Addictive,BM-TU,3
+HTL-Addictive,Br-BA,4
+HTL-Addictive,CA-Br,5
+HTL-Addictive,CFE,6
+HTL-Addictive,DMPU+PEAI,7
+HTL-Addictive,F2HCNQ,8
+HTL-Addictive,F4-TCNQ,9
+HTL-Addictive,FK209,10
+HTL-Addictive,Graphene,11
+HTL-Addictive,HI,12
+HTL-Addictive,I-76,13
+HTL-Addictive,LUMTEC+TBP+Li-TFSI,14
+HTL-Addictive,Li-TFSI,15
+HTL-Addictive,Li-TFSI+FK209,16
+HTL-Addictive,Li-TFSI+t-BP,17
+HTL-Addictive,Li-TFSI+t-BP+Co(TPBPy)3,18
+HTL-Addictive,Li-TFSI+t-BP+FK102,19
+HTL-Addictive,Li-TFSI+t-BP+FK209,20
+HTL-Addictive,Li-TFSI+t-BP+FK26+L2359,21
+HTL-Addictive,Li-TFSI+t-BP+PPO-Co(II)TFSI,22
+HTL-Addictive,Li-TFSI+t-BP+PPO-TEMPO(TFSI),23
+HTL-Addictive,Li-TFSI+t-CoPF6,24
+HTL-Addictive,LiN(CF3SO2)2N+TBP,25
+HTL-Addictive,MCC,26
+HTL-Addictive,OATFSI,27
+HTL-Addictive,P3HT,28
+HTL-Addictive,PA,29
+HTL-Addictive,PM,30
+HTL-Addictive,TEA,31
+HTL-Addictive,t-BP,32
+ETL,0,0
+ETL,BCP,1
+ETL,Bi-SnO2,2
+ETL,C60,3
+ETL,CBD-SnO2,4
+ETL,G-TiO2,5
+ETL,PAH,6
+ETL,PC60BM,7
+ETL,PC61BM,8
+ETL,PC71BM,9
+ETL,PCBM,10
+ETL,PTAA,11
+ETL,SnO2,12
+ETL,TiO2,13
+ETL,TiO2 nanorods,14
+ETL,ZnO,15
+ETL,ZnO-ZnS,16
+ETL,bl-TiO2,17
+ETL,c-TiO2,18
+ETL,m-TiO2,19
+ETL,np-SnO2,20
+ETL-2,0,0
+ETL-2,AI2O3,1
+ETL-2,BCP,2
+ETL-2,Bphen,3
+ETL-2,C60,4
+ETL-2,Ca,5
+ETL-2,FY1,6
+ETL-2,KCl,7
+ETL-2,PC60BM,8
+ETL-2,PCBM,9
+ETL-2,PEI,10
+ETL-2,PMMA:PCBM,11
+ETL-2,Rhodamine,12
+ETL-2,SnO2,13
+ETL-2,TBAOH,14
+ETL-2,TIPD,15
+ETL-2,TPBi,16
+ETL-2,Zn2SnO4,17
+ETL-2,ZnO,18
+ETL-2,ZrO2,19
+ETL-2,bl-TiO2,20
+ETL-2,c-TiO2,21
+ETL-2,m-TiO2,22
+ETL-2,np-SnO2,23
+ETL_Passivator,0,0
+ETL_Passivator,2-CF3-PEAI,1
+ETL_Passivator,APCl,2
+ETL_Passivator,BABr,3
+ETL_Passivator,BzMIMBr,4
+ETL_Passivator,DAP,5
+ETL_Passivator,DCP,6
+ETL_Passivator,DMATFA,7
+ETL_Passivator,DMDO,8
+ETL_Passivator,Di-g,9
+ETL_Passivator,EDA+PEA,10
+ETL_Passivator,EDTAK,11
+ETL_Passivator,EVA,12
+ETL_Passivator,FPAC60,13
+ETL_Passivator,GBA,14
+ETL_Passivator,Go-Li,15
+ETL_Passivator,H2O,16
+ETL_Passivator,KOH,17
+ETL_Passivator,L-His,18
+ETL_Passivator,Li2CO3,19
+ETL_Passivator,LiF,20
+ETL_Passivator,MACl,21
+ETL_Passivator,MESK,22
+ETL_Passivator,NAAc,23
+ETL_Passivator,NH4F,24
+ETL_Passivator,PCBA/PS,25
+ETL_Passivator,PCBBM,26
+ETL_Passivator,PDAI2,27
+ETL_Passivator,PDAI2+PEAI,28
+ETL_Passivator,PDAI2+Q344,29
+ETL_Passivator,PDI,30
+ETL_Passivator,PDMS,31
+ETL_Passivator,PEABr,32
+ETL_Passivator,PEABr+PMMA,33
+ETL_Passivator,PEACl,34
+ETL_Passivator,PEAI,35
+ETL_Passivator,PEAI+EDAI2,36
+ETL_Passivator,PMI-F-PMI,37
+ETL_Passivator,TMACL,38
+ETL_Passivator,VBETS,39
+ETL_Passivator,VBN,40
+ETL_Passivator,Y7-BO,41
+ETL_Passivator,ZrO2,42
+ETL_Passivator,g-C3N4,43
+ETL_Passivator,methyl ammonium chloride,44
+ETL_Passivator,piperazinium iodide,45
+ETL-Addictive, KMnO4,0
+ETL-Addictive,0,1
+ETL-Addictive,Acac,2
+ETL-Addictive,Al,3
+ETL-Addictive,ClT,4
+ETL-Addictive,DMAPF+N-DMBI,5
+ETL-Addictive,H2O,6
+ETL-Addictive,HNO3,7
+ETL-Addictive,IPA,8
+ETL-Addictive,KCl,9
+ETL-Addictive,KF,10
+ETL-Addictive,Li-TFSI,11
+ETL-Addictive,NbCl3,12
+ETL-Addictive,Niobium Ethoxide,13
+ETL-Addictive,OAmI,14
+ETL-Addictive,PAA,15
+ETL-Addictive,PAAm,16
+ETL-Addictive,PC,17
+ETL-Addictive,TAA,18
+ETL-Addictive,TPFPB +LiClO4 ,19
+ETL-Addictive,Urea,20
+ETL-Addictive,graphene,21
+ETL-Addictive,mercaptoacetic aCld,22
+Metal_Electrode,Ag,0
+Metal_Electrode,Al,1
+Metal_Electrode,Al+LiF,2
+Metal_Electrode,Au,3
+Metal_Electrode,Au+Ag,4
+Metal_Electrode,Au+ITO,5
+Metal_Electrode,Ca/Al,6
+Metal_Electrode,Carbon,7
+Metal_Electrode,Carbon+CuPc,8
+Metal_Electrode,Cr/Au,9
+Metal_Electrode,Cu,10
+Metal_Electrode,ITO,11
+Metal_Electrode,IZO,12
+Metal_Electrode,LTC,13
+Metal_Electrode,PG,14
+Glass,Ag,0
+Glass,Al,1
+Glass,Au,2
+Glass,ClGS,3
+Glass,Cu,4
+Glass,FTO,5
+Glass,ITO,6
+Glass,PDMS,7
+Glass,PDMS+PEN,8
+Glass,PEN+ITO,9
+Glass,PET+ITO,10
+Glass,TCO,11
+Precursor_Solution, DMF,0
+Precursor_Solution, DMF:NMP(125:24),1
+Precursor_Solution, isopropanol,2
+Precursor_Solution,0,3
+Precursor_Solution,2-ME,4
+Precursor_Solution,2-ME+ACN+NMP,5
+Precursor_Solution,2-ME+DMI,6
+Precursor_Solution,2-ME+DMSO,7
+Precursor_Solution,2-ME+DMSO+ACN,8
+Precursor_Solution,2P,9
+Precursor_Solution,ACN,10
+Precursor_Solution,ACN+2-ME+DMSO,11
+Precursor_Solution,ACN:2-ME(3:2),12
+Precursor_Solution,DMA,13
+Precursor_Solution,DMF,14
+Precursor_Solution,DMF+2-ME+NMP,15
+Precursor_Solution,DMF+DMSO,16
+Precursor_Solution,DMF+DMSO+ACN,17
+Precursor_Solution,DMF+DMSO+GBL,18
+Precursor_Solution,DMF+DMSO+IPA,19
+Precursor_Solution,DMF+IPA,20
+Precursor_Solution,DMF+NMP,21
+Precursor_Solution,DMF+NMP+2-ME,22
+Precursor_Solution,DMF:CHP(9:1),23
+Precursor_Solution,DMF:DMI(19:1),24
+Precursor_Solution,DMF:DMPU(9:1),25
+Precursor_Solution,DMF:DMSO (4:1),26
+Precursor_Solution,DMF:DMSO (4:6),27
+Precursor_Solution,DMF:DMSO(14:0.65),28
+Precursor_Solution,DMF:DMSO(19:1),29
+Precursor_Solution,DMF:DMSO(1:1),30
+Precursor_Solution,DMF:DMSO(1:4),31
+Precursor_Solution,DMF:DMSO(1:8),32
+Precursor_Solution,DMF:DMSO(20:3),33
+Precursor_Solution,DMF:DMSO(3.16:1),34
+Precursor_Solution,DMF:DMSO(3.3:1),35
+Precursor_Solution,DMF:DMSO(3:1),36
+Precursor_Solution,DMF:DMSO(4.75:1),37
+Precursor_Solution,DMF:DMSO(4:1),38
+Precursor_Solution,DMF:DMSO(5:1),39
+Precursor_Solution,DMF:DMSO(6:4),40
+Precursor_Solution,DMF:DMSO(7.6:1),41
+Precursor_Solution,DMF:DMSO(7:1),42
+Precursor_Solution,DMF:DMSO(7:3),43
+Precursor_Solution,DMF:DMSO(8.5:1.5),44
+Precursor_Solution,DMF:DMSO(8:1),45
+Precursor_Solution,DMF:DMSO(9:1),46
+Precursor_Solution,DMF:DMSO:GBL(1:1:1),47
+Precursor_Solution,DMF:DMSO:GBL(2:1:2),48
+Precursor_Solution,DMF:DMSO:NMP(4:1:1),49
+Precursor_Solution,DMF:DMSO:NMP(5.5:0.9:0.1),50
+Precursor_Solution,DMF:N1(9.1:0.9),51
+Precursor_Solution,DMF:NMP ( 5:1),52
+Precursor_Solution,DMF:NMP ( 8:1),53
+Precursor_Solution,DMF:NMP (1:1),54
+Precursor_Solution,DMF:NMP (4:1),55
+Precursor_Solution,DMF:NMP (5:95),56
+Precursor_Solution,DMF:NMP (6:1),57
+Precursor_Solution,DMF:NMP (8:9),58
+Precursor_Solution,DMF:NMP (9:1),59
+Precursor_Solution,DMF:NMP(180:29),60
+Precursor_Solution,DMF:NMP(1:1),61
+Precursor_Solution,DMF:NMP(6:1),62
+Precursor_Solution,DMF:NMP(95:5),63
+Precursor_Solution,DMF:NMP(9:1),64
+Precursor_Solution,DMF:TBP=9:1,65
+Precursor_Solution,DMSO,66
+Precursor_Solution,DMSO+GBL,67
+Precursor_Solution,DMSO+IPA,68
+Precursor_Solution,DMSO:GBL(1:1),69
+Precursor_Solution,DMSO:GBL(3:7),70
+Precursor_Solution,DMSO:GBL(8:2),71
+Precursor_Solution,GBL,72
+Precursor_Solution,GBL+EtOH+AcOH,73
+Precursor_Solution,GBL:2P(4:1),74
+Precursor_Solution,GBL:DMF:DMSO(16:4:1.125),75
+Precursor_Solution,GBL:DMSO(1:1),76
+Precursor_Solution,GBL:DMSO(1:9),77
+Precursor_Solution,GBL:DMSO(7:3),78
+Precursor_Solution,GBL:MSM(8:1),79
+Precursor_Solution,IPA,80
+Precursor_Solution,NMP+DMF,81
+Precursor_Solution,NMP:DMF(9:8),82
+Precursor_Solution,THF:ME(0.9:1),83
+Precursor_Solution,acetonitrile,84
+Precursor_Solution,ethanol,85
+Precursor_Solution_Addictive, L-α-PC,0
+Precursor_Solution_Addictive,0,1
+Precursor_Solution_Addictive,4-CBA,2
+Precursor_Solution_Addictive,5-AVAI,3
+Precursor_Solution_Addictive,BHC+LP+MAH2PO2+p-F-PEAI+NDDAI+ZnCl2,4
+Precursor_Solution_Addictive,BHC+n-DAI+LP+MAH2PO2+p-F-PEAI+DMSO,5
+Precursor_Solution_Addictive,BMCl,6
+Precursor_Solution_Addictive,BMIMBF4,7
+Precursor_Solution_Addictive,BMIMSCN,8
+Precursor_Solution_Addictive,BPyBF4+PbI2,9
+Precursor_Solution_Addictive,CBH+n-dodecylammonium iodide+LP+MAH2PO2+p-F-PEAI,10
+Precursor_Solution_Addictive,CHEAI,11
+Precursor_Solution_Addictive,CHP,12
+Precursor_Solution_Addictive,CMPS,13
+Precursor_Solution_Addictive,CPPA,14
+Precursor_Solution_Addictive,CsBr,15
+Precursor_Solution_Addictive,CsBr+SrI2,16
+Precursor_Solution_Addictive,CsI,17
+Precursor_Solution_Addictive,CsI+KI,18
+Precursor_Solution_Addictive,CsI+RbI,19
+Precursor_Solution_Addictive,CsI+RbI+KI,20
+Precursor_Solution_Addictive,DMF+CB,21
+Precursor_Solution_Addictive,DMSCl2,22
+Precursor_Solution_Addictive,DMSO,23
+Precursor_Solution_Addictive,DPSO,24
+Precursor_Solution_Addictive,DSPC,25
+Precursor_Solution_Addictive,DiSe,26
+Precursor_Solution_Addictive,EACl,27
+Precursor_Solution_Addictive,EMIC+n-dodecylammonium iodide+LP+MAH2PO2+p-F-PEAI+benzylhydrazine dihydrochloride,28
+Precursor_Solution_Addictive,FACl,29
+Precursor_Solution_Addictive,FAH2PO2 +LP+n-octylammonium iodide+phenylethylammonium chloride+TPABr3,30
+Precursor_Solution_Addictive,"FAH₂PO₃+FACl+PEABF₄
++GAPbI₃+LP+CsI+ZnCl₂
++CBH",31
+Precursor_Solution_Addictive,FAI,32
+Precursor_Solution_Addictive,FAI+CsI,33
+Precursor_Solution_Addictive,FAI+MABr,34
+Precursor_Solution_Addictive,FAI+MACl+CsI,35
+Precursor_Solution_Addictive,FASCl,36
+Precursor_Solution_Addictive,H2O+DMF,37
+Precursor_Solution_Addictive,HI,38
+Precursor_Solution_Addictive,InCl3,39
+Precursor_Solution_Addictive,KCl,40
+Precursor_Solution_Addictive,KCl+PbI2,41
+Precursor_Solution_Addictive,KNCO,42
+Precursor_Solution_Addictive,KPF6+PbCl2,43
+Precursor_Solution_Addictive,L-AA,44
+Precursor_Solution_Addictive,LP,45
+Precursor_Solution_Addictive,LP+BMIMBF4+MACl+PbI2,46
+Precursor_Solution_Addictive,LP+MACl+DMSO,47
+Precursor_Solution_Addictive,LP+MACl+DMSO+MH2PO2,48
+Precursor_Solution_Addictive,LP+MACl+PACl+PbI2+NMP,49
+Precursor_Solution_Addictive,LP+methylammonium chloride+MAH2PO2,50
+Precursor_Solution_Addictive,MAA,51
+Precursor_Solution_Addictive,MABr,52
+Precursor_Solution_Addictive,MACl,53
+Precursor_Solution_Addictive,MACl+CsI,54
+Precursor_Solution_Addictive,MACl+DMSO,55
+Precursor_Solution_Addictive,MACl+FAI+CsI,56
+Precursor_Solution_Addictive,MACl+HMPA,57
+Precursor_Solution_Addictive,MACl+L-PC+MAH+PEC,58
+Precursor_Solution_Addictive,MACl+MABr+CsBr,59
+Precursor_Solution_Addictive,MACl+MABr+PC,60
+Precursor_Solution_Addictive,MACl+MAPbBr3,61
+Precursor_Solution_Addictive,MACl+NMP,62
+Precursor_Solution_Addictive,MACl+PEACl+PbCl2+MeO-4PACz+CBH,63
+Precursor_Solution_Addictive,MACl+Pb(SCN)2,64
+Precursor_Solution_Addictive,MACl+PbI2,65
+Precursor_Solution_Addictive,MACl+SBLC,66
+Precursor_Solution_Addictive,MACl+[Bcmim]Cl,67
+Precursor_Solution_Addictive,MACl+p-F-PEAI,68
+Precursor_Solution_Addictive,MAI,69
+Precursor_Solution_Addictive,MAI+5AVAI,70
+Precursor_Solution_Addictive,MAI+FAI,71
+Precursor_Solution_Addictive,MAI+Kac,72
+Precursor_Solution_Addictive,MAPbCl3,73
+Precursor_Solution_Addictive,MCH,74
+Precursor_Solution_Addictive,MDPPO,75
+Precursor_Solution_Addictive,Mxene,76
+Precursor_Solution_Addictive,NH3,77
+Precursor_Solution_Addictive,NH4Ac+PbAc2+HPA,78
+Precursor_Solution_Addictive,PBAI,79
+Precursor_Solution_Addictive,PHNS+BNAC,80
+Precursor_Solution_Addictive,PU,81
+Precursor_Solution_Addictive,PZ,82
+Precursor_Solution_Addictive,Pb(SCN)2,83
+Precursor_Solution_Addictive,PbCl2,84
+Precursor_Solution_Addictive,PbCl2+ Pb(Ac)2+MAI,85
+Precursor_Solution_Addictive,PbCl2+FAI,86
+Precursor_Solution_Addictive,PbCl2+MACl,87
+Precursor_Solution_Addictive,PbCl2+PbAc2,88
+Precursor_Solution_Addictive,PbI2,89
+Precursor_Solution_Addictive,PbI2+5AVAI,90
+Precursor_Solution_Addictive,PbI2+BNCl,91
+Precursor_Solution_Addictive,PbI2+CsBr+Urea,92
+Precursor_Solution_Addictive,PbI2+CsForm,93
+Precursor_Solution_Addictive,PbI2+CsI,94
+Precursor_Solution_Addictive,PbI2+CsI+MACl,95
+Precursor_Solution_Addictive,PbI2+CsPbBr3,96
+Precursor_Solution_Addictive,PbI2+Cyclen,97
+Precursor_Solution_Addictive,PbI2+DIO+MACl,98
+Precursor_Solution_Addictive,PbI2+DMPU,99
+Precursor_Solution_Addictive,PbI2+H2O,100
+Precursor_Solution_Addictive,PbI2+IPA,101
+Precursor_Solution_Addictive,PbI2+KI,102
+Precursor_Solution_Addictive,PbI2+KPb2Br5,103
+Precursor_Solution_Addictive,PbI2+MAAc,104
+Precursor_Solution_Addictive,PbI2+MACl,105
+Precursor_Solution_Addictive,PbI2+NH4Cl,106
+Precursor_Solution_Addictive,PbI2+OFPP,107
+Precursor_Solution_Addictive,PbI2+PU,108
+Precursor_Solution_Addictive,PbI2+PbBr2,109
+Precursor_Solution_Addictive,PbI2+PbBr2+18C6,110
+Precursor_Solution_Addictive,PbI2+PbCl2,111
+Precursor_Solution_Addictive,PbI2+TPPO,112
+Precursor_Solution_Addictive,PbI₂+ FAI+ MAI+ CsCl,113
+Precursor_Solution_Addictive,Polyurethane,114
+Precursor_Solution_Addictive,bis-DMEC60,115
+Precursor_Solution_Addictive,iBA-iBDTC,116
+Precursor_Solution_Addictive,n-butanol,117
+Precursor_Solution_Addictive,n-dodecylammonium iodide+LP+MAH2PO2+p-F-PEAI+BzH₂Cl₂+DMSO,118
+Precursor_Solution_Addictive,sulfolane,119
+Precursor_Solution_Addictive,t-BA,120
+Deposition_Method,Chemical vapor  deposition,0
+Deposition_Method,D-bar coating,1
+Deposition_Method,Drop casting,2
+Deposition_Method,Evaporation+blade-coating,3
+Deposition_Method,Evaporation+slot die-coating,4
+Deposition_Method,blade-coating,5
+Deposition_Method,drop casting,6
+Deposition_Method,evaporation,7
+Deposition_Method,evaporation+spary-coating,8
+Deposition_Method,evaporation+spin-coating,9
+Deposition_Method,pressure application,10
+Deposition_Method,slot die-coating,11
+Deposition_Method,spin-coating,12
+Deposition_Method,spin-coating + spray-coating,13
+Deposition_Method,spray-coating,14
+Deposition_Method,spray-coating+Chemical vapor  deposition,15
+Antisolvent,0,0
+Antisolvent,2-butanol,1
+Antisolvent,BA,2
+Antisolvent,CB,3
+Antisolvent,C₄H₃BrS,4
+Antisolvent,Diethyl ether,5
+Antisolvent,EA,6
+Antisolvent,EA (MASCN),7
+Antisolvent,EA/Tol (1:1),8
+Antisolvent,Ethyl ether,9
+Antisolvent,IPA,10
+Antisolvent,SBS,11
+Antisolvent,Toluene+CB,12
+Antisolvent,anisole,13
+Antisolvent,n-BA,14
+Antisolvent,n-hexane,15
+Antisolvent,toluene,16
+Type,0,0
+Type,Parallel,1
+Type,Series,2
+Type,parallel-then-Seriesconnection,3
+brand,0,0
+brand,AMG,1
+brand,Advanced Optowave,2
+brand,Advanced Optowave Corporation,3
+brand,"CL Technology Co., Ltd",4
+brand,DaZe  Optoelectronics,5
+brand,EL-MKRF,6
+brand,Han's laser,7
+brand,Hangzhou Zhongneng Optoelectronic  Technology,8
+brand,Helios,9
+brand,Hongtuo,10
+brand,INNOLAS,11
+brand,KT-PZ150,12
+brand,Keyence,13
+brand,Musashi Engineering,14
+brand,Nd:YAG,15
+brand,Nd:YVO4,16
+brand,Newport,17
+brand,OPVtech,18
+brand,Photonics Industries,19
+brand,Resonetics,20
+brand,Rofin Baasel Lasertech,21
+brand,SClPRIOS GmbH,22
+brand,Saule Technologies,23
+brand,Spectra physics,24
+brand,Spectronix,25
+brand,Suzhou Jieweiman New Energy Technology,26
+brand,THG-YAG,27
+brand,Talisker Ultra,28
+brand,Triumph,29
+brand,Trotec,30
+brand,UV-O3,31
+brand,Universal Laser Systems,32
+brand,Wophotonics,33
+brand,Wuhan Hongtuo,34
+brand,ZNLB-22V1-LW300,35
+brand,Zhongneng Photoelectric,36
+brand,μ-Lab,37

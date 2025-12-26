@@ -1,0 +1,28 @@
+﻿Record_Index,Record_ID,Original_PCE,Feature,Rank,Original_Value_Encoded,Original_Value_Decoded,Recommended_Value_Encoded,Recommended_Value_Decoded,Display_Value,Predicted_PCE,Adjusted_PCE,Similarity_Score,Improvement
+1,Record_1,22.81,ETL_Passivator,1,0,0,36,PMI-F-PMI,PMI-F-PMI (36),20.6749,22.3743,0.796,-0.4357
+1,Record_1,22.81,ETL_Passivator,2,0,0,34,PEAI,PEAI (34),20.6749,22.3743,0.796,-0.4357
+1,Record_1,22.81,ETL_Passivator,3,0,0,39,VBN,VBN (39),20.6749,22.3743,0.796,-0.4357
+1,Record_1,22.81,HTL_Passivator,1,32,PEAI,40,Urea,Urea (40),20.2734,22.2618,0.784,-0.5482
+1,Record_1,22.81,HTL_Passivator,2,32,PEAI,43,fMoS2,fMoS2 (43),20.2733,22.2618,0.784,-0.5482
+1,Record_1,22.81,HTL_Passivator,3,32,PEAI,42,[M4N]BF₄,[M4N]BF₄ (42),20.2733,22.2618,0.784,-0.5482
+1,Record_1,22.81,Precursor_Solution_Addictive,1,89,PbI2+BNCl,116,n-dodecylammonium iodide+LP+MAH2PO2+p-F-PEAI+BzH₂Cl₂+DMSO,n-dodecylammonium iodide+LP+MAH2PO2+p-F-PEAI+BzH₂Cl₂+DMSO (116),20.037,22.1911,0.777,-0.6189
+1,Record_1,22.81,Precursor_Solution_Addictive,2,89,PbI2+BNCl,115,n-butanol,n-butanol (115),20.037,22.1911,0.777,-0.6189
+1,Record_1,22.81,Precursor_Solution_Addictive,3,89,PbI2+BNCl,117,sulfolane,sulfolane (117),20.037,22.1911,0.777,-0.6189
+2,Record_2,22.47,ETL_Passivator,1,0,0,36,PMI-F-PMI,PMI-F-PMI (36),20.6749,22.122,0.806,-0.348
+2,Record_2,22.47,ETL_Passivator,2,0,0,34,PEAI,PEAI (34),20.6749,22.122,0.806,-0.348
+2,Record_2,22.47,ETL_Passivator,3,0,0,39,VBN,VBN (39),20.6749,22.122,0.806,-0.348
+2,Record_2,22.47,HTL_Passivator,1,19,DPA-TFA,40,Urea,Urea (40),20.2734,22.0177,0.794,-0.4523
+2,Record_2,22.47,HTL_Passivator,2,19,DPA-TFA,43,fMoS2,fMoS2 (43),20.2733,22.0177,0.794,-0.4523
+2,Record_2,22.47,HTL_Passivator,3,19,DPA-TFA,42,[M4N]BF₄,[M4N]BF₄ (42),20.2733,22.0177,0.794,-0.4523
+2,Record_2,22.47,Precursor_Solution_Addictive,1,53,MACl,116,n-dodecylammonium iodide+LP+MAH2PO2+p-F-PEAI+BzH₂Cl₂+DMSO,n-dodecylammonium iodide+LP+MAH2PO2+p-F-PEAI+BzH₂Cl₂+DMSO (116),20.037,21.9518,0.787,-0.5182
+2,Record_2,22.47,Precursor_Solution_Addictive,2,53,MACl,115,n-butanol,n-butanol (115),20.037,21.9518,0.787,-0.5182
+2,Record_2,22.47,Precursor_Solution_Addictive,3,53,MACl,117,sulfolane,sulfolane (117),20.037,21.9518,0.787,-0.5182
+3,Record_3,21.83,ETL_Passivator,1,0,0,36,PMI-F-PMI,PMI-F-PMI (36),20.6749,21.6283,0.825,-0.2017
+3,Record_3,21.83,ETL_Passivator,2,0,0,34,PEAI,PEAI (34),20.6749,21.6283,0.825,-0.2017
+3,Record_3,21.83,ETL_Passivator,3,0,0,39,VBN,VBN (39),20.6749,21.6283,0.825,-0.2017
+3,Record_3,21.83,HTL_Passivator,1,1,0,40,Urea,Urea (40),20.2734,21.5394,0.813,-0.2906
+3,Record_3,21.83,HTL_Passivator,2,1,0,43,fMoS2,fMoS2 (43),20.2733,21.5394,0.813,-0.2906
+3,Record_3,21.83,HTL_Passivator,3,1,0,42,[M4N]BF₄,[M4N]BF₄ (42),20.2733,21.5394,0.813,-0.2906
+3,Record_3,21.83,Precursor_Solution_Addictive,1,53,MACl,116,n-dodecylammonium iodide+LP+MAH2PO2+p-F-PEAI+BzH₂Cl₂+DMSO,n-dodecylammonium iodide+LP+MAH2PO2+p-F-PEAI+BzH₂Cl₂+DMSO (116),20.037,21.4825,0.806,-0.3475
+3,Record_3,21.83,Precursor_Solution_Addictive,2,53,MACl,115,n-butanol,n-butanol (115),20.037,21.4825,0.806,-0.3475
+3,Record_3,21.83,Precursor_Solution_Addictive,3,53,MACl,117,sulfolane,sulfolane (117),20.037,21.4825,0.806,-0.3475

@@ -1,0 +1,28 @@
+﻿Record_Index,Record_ID,Original_PCE,Feature,Rank,Original_Value_Encoded,Original_Value_Decoded,Recommended_Value_Encoded,Recommended_Value_Decoded,Display_Value,Predicted_PCE,Improvement,Value_Mean_PCE,Value_PCE_Std,Relative_Performance,Data_Count,Confidence,Calculation_Method
+1,Record_1,22.81,ETL_Passivator,1,0,0,44,piperazinium iodide,piperazinium iodide (44),23.4733,0.6633,23.4733,0.5787,7.1318,3,20,value_mean_based
+1,Record_1,22.81,ETL_Passivator,2,0,0,37,TMACL,TMACL (37),22.9742,0.1642,22.76,0.0,6.4184,2,20,value_mean_based
+1,Record_1,22.81,ETL_Passivator,3,0,0,38,VBETS,VBETS (38),22.9686,0.1586,22.2,,5.8584,1,20,value_mean_based
+1,Record_1,22.81,HTL_Passivator,1,32,PEAI,36,PTABr,PTABr (36),23.13,0.32,23.13,0.297,6.7884,2,20,value_mean_based
+1,Record_1,22.81,HTL_Passivator,2,32,PEAI,12,CHEAI,CHEAI (12),22.9712,0.1612,22.46,,6.1184,1,20,value_mean_based
+1,Record_1,22.81,HTL_Passivator,3,32,PEAI,29,OAI,OAI (29),22.9678,0.1578,22.125,0.3041,5.7834,2,20,value_mean_based
+1,Record_1,22.81,Precursor_Solution_Addictive,1,89,PbI2+BNCl,56,MACl+FAI+CsI,MACl+FAI+CsI (56),23.81,1.0,24.17,,7.8284,1,20,value_mean_based
+1,Record_1,22.81,Precursor_Solution_Addictive,2,89,PbI2+BNCl,68,MACl+p-F-PEAI,MACl+p-F-PEAI (68),23.62,0.81,23.62,0.7354,7.2784,2,20,value_mean_based
+1,Record_1,22.81,Precursor_Solution_Addictive,3,89,PbI2+BNCl,79,PHNS+BNAC,PHNS+BNAC (79),23.18,0.37,23.18,,6.8384,1,20,value_mean_based
+2,Record_2,22.47,ETL_Passivator,1,0,0,44,piperazinium iodide,piperazinium iodide (44),23.47,1.0,23.4733,0.5787,7.1318,3,20,value_mean_based
+2,Record_2,22.47,ETL_Passivator,2,0,0,37,TMACL,TMACL (37),22.76,0.29,22.76,0.0,6.4184,2,20,value_mean_based
+2,Record_2,22.47,ETL_Passivator,3,0,0,38,VBETS,VBETS (38),22.6286,0.1586,22.2,,5.8584,1,20,value_mean_based
+2,Record_2,22.47,HTL_Passivator,1,19,DPA-TFA,36,PTABr,PTABr (36),23.13,0.66,23.13,0.297,6.7884,2,20,value_mean_based
+2,Record_2,22.47,HTL_Passivator,2,19,DPA-TFA,12,CHEAI,CHEAI (12),22.6312,0.1612,22.46,,6.1184,1,20,value_mean_based
+2,Record_2,22.47,HTL_Passivator,3,19,DPA-TFA,29,OAI,OAI (29),22.6278,0.1578,22.125,0.3041,5.7834,2,20,value_mean_based
+2,Record_2,22.47,Precursor_Solution_Addictive,1,53,MACl,56,MACl+FAI+CsI,MACl+FAI+CsI (56),23.47,1.0,24.17,,7.8284,1,20,value_mean_based
+2,Record_2,22.47,Precursor_Solution_Addictive,2,53,MACl,68,MACl+p-F-PEAI,MACl+p-F-PEAI (68),23.47,1.0,23.62,0.7354,7.2784,2,20,value_mean_based
+2,Record_2,22.47,Precursor_Solution_Addictive,3,53,MACl,79,PHNS+BNAC,PHNS+BNAC (79),23.18,0.71,23.18,,6.8384,1,20,value_mean_based
+3,Record_3,21.83,ETL_Passivator,1,0,0,44,piperazinium iodide,piperazinium iodide (44),22.83,1.0,23.4733,0.5787,7.1318,3,20,value_mean_based
+3,Record_3,21.83,ETL_Passivator,2,0,0,37,TMACL,TMACL (37),22.76,0.93,22.76,0.0,6.4184,2,20,value_mean_based
+3,Record_3,21.83,ETL_Passivator,3,0,0,38,VBETS,VBETS (38),22.2,0.37,22.2,,5.8584,1,20,value_mean_based
+3,Record_3,21.83,HTL_Passivator,1,1,0,36,PTABr,PTABr (36),22.83,1.0,23.13,0.297,6.7884,2,20,value_mean_based
+3,Record_3,21.83,HTL_Passivator,2,1,0,12,CHEAI,CHEAI (12),22.46,0.63,22.46,,6.1184,1,20,value_mean_based
+3,Record_3,21.83,HTL_Passivator,3,1,0,29,OAI,OAI (29),22.125,0.295,22.125,0.3041,5.7834,2,20,value_mean_based
+3,Record_3,21.83,Precursor_Solution_Addictive,1,53,MACl,67,MACl+[Bcmim]Cl,MACl+[Bcmim]Cl (67),22.83,1.0,22.97,,6.6284,1,20,value_mean_based
+3,Record_3,21.83,Precursor_Solution_Addictive,2,53,MACl,56,MACl+FAI+CsI,MACl+FAI+CsI (56),22.83,1.0,24.17,,7.8284,1,20,value_mean_based
+3,Record_3,21.83,Precursor_Solution_Addictive,3,53,MACl,68,MACl+p-F-PEAI,MACl+p-F-PEAI (68),22.83,1.0,23.62,0.7354,7.2784,2,20,value_mean_based

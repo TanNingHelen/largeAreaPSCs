@@ -1,0 +1,18 @@
+Original,Encoded
+Chemical vapor  deposition,0
+D-bar coating,1
+Drop casting,2
+Evaporation+blade-coating,3
+Evaporation+slot die-coating,4
+Evaporation+spin-coating,5
+blade-coating,6
+drop casting,7
+evaporation,8
+evaporation+spary-coating,9
+evaporation+spin-coating,10
+pressure application,11
+slot die-coating,12
+spin-coating,13
+spin-coating + spray-coating,14
+spray-coating,15
+spray-coating+Chemical vapor  deposition,16
