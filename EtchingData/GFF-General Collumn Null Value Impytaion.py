@@ -226,4 +226,4 @@ encoded_array = encoder.fit_transform(df[[constantStructure]])
 
 
 # 将处理后的数据保存为xlsx文件
-df.to_excel('GeneralNullFilled2.xlsx', index=False)
+df.to_excel('GeneralNullFilled.xlsx', index=False)

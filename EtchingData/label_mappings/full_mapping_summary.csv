@@ -15,28 +15,30 @@ HTL,FTPE-ST,10
 HTL,LiCoO₂,11
 HTL,MFGO,12
 HTL,Me-4PACz,13
-HTL,MeO-2PACz,14
-HTL,MoO3 ,15
-HTL,NiMgLiO,16
-HTL,NiOx,17
-HTL,P3HT,18
-HTL,P3HT-COOH,19
-HTL,PEDOT:EVA,20
-HTL,PEDOT:GO,21
-HTL,PEDOT:PSS,22
-HTL,PTAA,23
-HTL,PTZ-FI,24
-HTL,Poly4PACz,25
-HTL,SA-BPP,26
-HTL,SRE-NiOx,27
-HTL,Spiro-OMeTAD,28
-HTL,Spiro-TTB,29
-HTL,TAA-tetramer,30
-HTL,TFB,31
-HTL,TPA-PT-C6,32
-HTL,V1366,33
-HTL,hc-PEDOT:PSS,34
-HTL,spiro-Naph,35
+HTL,Me-4PACz+MeO-2PACz,14
+HTL,MeO-2PACz,15
+HTL,MoO3 ,16
+HTL,NiMgLiO,17
+HTL,NiOx,18
+HTL,P3HT,19
+HTL,P3HT-COOH,20
+HTL,PEDOT:EVA,21
+HTL,PEDOT:GO,22
+HTL,PEDOT:PSS,23
+HTL,PTAA,24
+HTL,PTZ-FI,25
+HTL,Poly4PACz,26
+HTL,Py3,27
+HTL,SA-BPP,28
+HTL,SRE-NiOx,29
+HTL,Spiro-OMeTAD,30
+HTL,Spiro-TTB,31
+HTL,TAA-tetramer,32
+HTL,TFB,33
+HTL,TPA-PT-C6,34
+HTL,V1366,35
+HTL,hc-PEDOT:PSS,36
+HTL,spiro-Naph,37
 HTL-2, P3HT,0
 HTL-2,0,1
 HTL-2,AI2O3,2
@@ -82,27 +84,27 @@ HTL_Passivator,FABP,23
 HTL_Passivator,HTAB,24
 HTL_Passivator,ISO+NEO,25
 HTL_Passivator,MG-PEDOT,26
-HTL_Passivator,MoS2,27
-HTL_Passivator,NMG,28
-HTL_Passivator,OAI,29
-HTL_Passivator,Oam,30
-HTL_Passivator,PEACl,31
-HTL_Passivator,PEAI,32
-HTL_Passivator,PEAI:DIO,33
-HTL_Passivator,PMMA,34
-HTL_Passivator,PTAB,35
-HTL_Passivator,PTABr,36
-HTL_Passivator,PyrPbI3,37
-HTL_Passivator,TPAI,38
-HTL_Passivator,TeDA,39
-HTL_Passivator,Urea,40
-HTL_Passivator,[EMIM]Br,41
-HTL_Passivator,[M4N]BF₄,42
-HTL_Passivator,fMoS2,43
-HTL_Passivator,i-BABr,44
-HTL_Passivator,ipr-i,45
-HTL_Passivator,levodopa,46
-HTL_Passivator,m-PEAI,47
+HTL_Passivator,MeO-PEAI,27
+HTL_Passivator,MoS2,28
+HTL_Passivator,NMG,29
+HTL_Passivator,OAI,30
+HTL_Passivator,Oam,31
+HTL_Passivator,PEACl,32
+HTL_Passivator,PEAI,33
+HTL_Passivator,PEAI:DIO,34
+HTL_Passivator,PMMA,35
+HTL_Passivator,PTAB,36
+HTL_Passivator,PTABr,37
+HTL_Passivator,PyrPbI3,38
+HTL_Passivator,TPAI,39
+HTL_Passivator,TeDA,40
+HTL_Passivator,Urea,41
+HTL_Passivator,[EMIM]Br,42
+HTL_Passivator,[M4N]BF₄,43
+HTL_Passivator,fMoS2,44
+HTL_Passivator,i-BABr,45
+HTL_Passivator,ipr-i,46
+HTL_Passivator,levodopa,47
 HTL_Passivator,o-PDEAI2,48
 HTL_Passivator,tBAI,49
 HTL-Addictive,0,0
@@ -210,24 +212,25 @@ ETL_Passivator,NAAc,23
 ETL_Passivator,NH4F,24
 ETL_Passivator,PCBA/PS,25
 ETL_Passivator,PCBBM,26
-ETL_Passivator,PDAI,27
-ETL_Passivator,PDAI+PEAI,28
-ETL_Passivator,PDI,29
-ETL_Passivator,PDMS,30
-ETL_Passivator,PEABr,31
-ETL_Passivator,PEABr+PMMA,32
-ETL_Passivator,PEACl,33
-ETL_Passivator,PEAI,34
-ETL_Passivator,PEAI+EDAI2,35
-ETL_Passivator,PMI-F-PMI,36
-ETL_Passivator,TMACL,37
-ETL_Passivator,VBETS,38
-ETL_Passivator,VBN,39
-ETL_Passivator,Y7-BO,40
-ETL_Passivator,ZrO2,41
-ETL_Passivator,g-C3N4,42
-ETL_Passivator,methyl ammonium chloride,43
-ETL_Passivator,piperazinium iodide,44
+ETL_Passivator,PDAI2,27
+ETL_Passivator,PDAI2+PEAI,28
+ETL_Passivator,PDAI2+Q344,29
+ETL_Passivator,PDI,30
+ETL_Passivator,PDMS,31
+ETL_Passivator,PEABr,32
+ETL_Passivator,PEABr+PMMA,33
+ETL_Passivator,PEACl,34
+ETL_Passivator,PEAI,35
+ETL_Passivator,PEAI+EDAI2,36
+ETL_Passivator,PMI-F-PMI,37
+ETL_Passivator,TMACL,38
+ETL_Passivator,VBETS,39
+ETL_Passivator,VBN,40
+ETL_Passivator,Y7-BO,41
+ETL_Passivator,ZrO2,42
+ETL_Passivator,g-C3N4,43
+ETL_Passivator,methyl ammonium chloride,44
+ETL_Passivator,piperazinium iodide,45
 ETL-Addictive, KMnO4,0
 ETL-Addictive,0,1
 ETL-Addictive,Acac,2
@@ -242,14 +245,15 @@ ETL-Addictive,KF,10
 ETL-Addictive,Li-TFSI,11
 ETL-Addictive,NbCl3,12
 ETL-Addictive,Niobium Ethoxide,13
-ETL-Addictive,PAA,14
-ETL-Addictive,PAAm,15
-ETL-Addictive,PC,16
-ETL-Addictive,TAA,17
-ETL-Addictive,TPFPB +LiClO4 ,18
-ETL-Addictive,Urea,19
-ETL-Addictive,graphene,20
-ETL-Addictive,mercaptoacetic aCld,21
+ETL-Addictive,OAmI,14
+ETL-Addictive,PAA,15
+ETL-Addictive,PAAm,16
+ETL-Addictive,PC,17
+ETL-Addictive,TAA,18
+ETL-Addictive,TPFPB +LiClO4 ,19
+ETL-Addictive,Urea,20
+ETL-Addictive,graphene,21
+ETL-Addictive,mercaptoacetic aCld,22
 Metal_Electrode,Ag,0
 Metal_Electrode,Al,1
 Metal_Electrode,Al+LiF,2
@@ -326,42 +330,43 @@ Precursor_Solution,DMF:DMSO(8:1),45
 Precursor_Solution,DMF:DMSO(9:1),46
 Precursor_Solution,DMF:DMSO:GBL(1:1:1),47
 Precursor_Solution,DMF:DMSO:GBL(2:1:2),48
-Precursor_Solution,DMF:DMSO:NMP(5.5:0.9:0.1),49
-Precursor_Solution,DMF:N1(9.1:0.9),50
-Precursor_Solution,DMF:NMP ( 5:1),51
-Precursor_Solution,DMF:NMP ( 8:1),52
-Precursor_Solution,DMF:NMP (1:1),53
-Precursor_Solution,DMF:NMP (4:1),54
-Precursor_Solution,DMF:NMP (5:95),55
-Precursor_Solution,DMF:NMP (6:1),56
-Precursor_Solution,DMF:NMP (8:9),57
-Precursor_Solution,DMF:NMP (9:1),58
-Precursor_Solution,DMF:NMP(180:29),59
-Precursor_Solution,DMF:NMP(1:1),60
-Precursor_Solution,DMF:NMP(6:1),61
-Precursor_Solution,DMF:NMP(95:5),62
-Precursor_Solution,DMF:NMP(9:1),63
-Precursor_Solution,DMF:TBP=9:1,64
-Precursor_Solution,DMSO,65
-Precursor_Solution,DMSO+GBL,66
-Precursor_Solution,DMSO+IPA,67
-Precursor_Solution,DMSO:GBL(1:1),68
-Precursor_Solution,DMSO:GBL(3:7),69
-Precursor_Solution,DMSO:GBL(8:2),70
-Precursor_Solution,GBL,71
-Precursor_Solution,GBL+EtOH+AcOH,72
-Precursor_Solution,GBL:2P(4:1),73
-Precursor_Solution,GBL:DMF:DMSO(16:4:1.125),74
-Precursor_Solution,GBL:DMSO(1:1),75
-Precursor_Solution,GBL:DMSO(1:9),76
-Precursor_Solution,GBL:DMSO(7:3),77
-Precursor_Solution,GBL:MSM(8:1),78
-Precursor_Solution,IPA,79
-Precursor_Solution,NMP+DMF,80
-Precursor_Solution,NMP:DMF(9:8),81
-Precursor_Solution,THF:ME(0.9:1),82
-Precursor_Solution,acetonitrile,83
-Precursor_Solution,ethanol,84
+Precursor_Solution,DMF:DMSO:NMP(4:1:1),49
+Precursor_Solution,DMF:DMSO:NMP(5.5:0.9:0.1),50
+Precursor_Solution,DMF:N1(9.1:0.9),51
+Precursor_Solution,DMF:NMP ( 5:1),52
+Precursor_Solution,DMF:NMP ( 8:1),53
+Precursor_Solution,DMF:NMP (1:1),54
+Precursor_Solution,DMF:NMP (4:1),55
+Precursor_Solution,DMF:NMP (5:95),56
+Precursor_Solution,DMF:NMP (6:1),57
+Precursor_Solution,DMF:NMP (8:9),58
+Precursor_Solution,DMF:NMP (9:1),59
+Precursor_Solution,DMF:NMP(180:29),60
+Precursor_Solution,DMF:NMP(1:1),61
+Precursor_Solution,DMF:NMP(6:1),62
+Precursor_Solution,DMF:NMP(95:5),63
+Precursor_Solution,DMF:NMP(9:1),64
+Precursor_Solution,DMF:TBP=9:1,65
+Precursor_Solution,DMSO,66
+Precursor_Solution,DMSO+GBL,67
+Precursor_Solution,DMSO+IPA,68
+Precursor_Solution,DMSO:GBL(1:1),69
+Precursor_Solution,DMSO:GBL(3:7),70
+Precursor_Solution,DMSO:GBL(8:2),71
+Precursor_Solution,GBL,72
+Precursor_Solution,GBL+EtOH+AcOH,73
+Precursor_Solution,GBL:2P(4:1),74
+Precursor_Solution,GBL:DMF:DMSO(16:4:1.125),75
+Precursor_Solution,GBL:DMSO(1:1),76
+Precursor_Solution,GBL:DMSO(1:9),77
+Precursor_Solution,GBL:DMSO(7:3),78
+Precursor_Solution,GBL:MSM(8:1),79
+Precursor_Solution,IPA,80
+Precursor_Solution,NMP+DMF,81
+Precursor_Solution,NMP:DMF(9:8),82
+Precursor_Solution,THF:ME(0.9:1),83
+Precursor_Solution,acetonitrile,84
+Precursor_Solution,ethanol,85
 Precursor_Solution_Addictive, L-α-PC,0
 Precursor_Solution_Addictive,0,1
 Precursor_Solution_Addictive,4-CBA,2
@@ -427,7 +432,7 @@ Precursor_Solution_Addictive,MACl+MABr+CsBr,59
 Precursor_Solution_Addictive,MACl+MABr+PC,60
 Precursor_Solution_Addictive,MACl+MAPbBr3,61
 Precursor_Solution_Addictive,MACl+NMP,62
-Precursor_Solution_Addictive,MACl+PEACl+PbCl2+Me-4PACz+CBH,63
+Precursor_Solution_Addictive,MACl+PEACl+PbCl2+MeO-4PACz+CBH,63
 Precursor_Solution_Addictive,MACl+Pb(SCN)2,64
 Precursor_Solution_Addictive,MACl+PbI2,65
 Precursor_Solution_Addictive,MACl+SBLC,66
@@ -438,68 +443,69 @@ Precursor_Solution_Addictive,MAI+5AVAI,70
 Precursor_Solution_Addictive,MAI+FAI,71
 Precursor_Solution_Addictive,MAI+Kac,72
 Precursor_Solution_Addictive,MAPbCl3,73
-Precursor_Solution_Addictive,MDPPO,74
-Precursor_Solution_Addictive,Mxene,75
-Precursor_Solution_Addictive,NH3,76
-Precursor_Solution_Addictive,NH4Ac+PbAc2+HPA,77
-Precursor_Solution_Addictive,PBAI,78
-Precursor_Solution_Addictive,PHNS+BNAC,79
-Precursor_Solution_Addictive,PU,80
-Precursor_Solution_Addictive,PZ,81
-Precursor_Solution_Addictive,PbCl2,82
-Precursor_Solution_Addictive,PbCl2+ Pb(Ac)2+MAI,83
-Precursor_Solution_Addictive,PbCl2+FAI,84
-Precursor_Solution_Addictive,PbCl2+MACl,85
-Precursor_Solution_Addictive,PbCl2+PbAc2,86
-Precursor_Solution_Addictive,PbI2,87
-Precursor_Solution_Addictive,PbI2+5AVAI,88
-Precursor_Solution_Addictive,PbI2+BNCl,89
-Precursor_Solution_Addictive,PbI2+CsBr+Urea,90
-Precursor_Solution_Addictive,PbI2+CsForm,91
-Precursor_Solution_Addictive,PbI2+CsI,92
-Precursor_Solution_Addictive,PbI2+CsI+MACl,93
-Precursor_Solution_Addictive,PbI2+CsPbBr3,94
-Precursor_Solution_Addictive,PbI2+Cyclen,95
-Precursor_Solution_Addictive,PbI2+DIO+MACl,96
-Precursor_Solution_Addictive,PbI2+DMPU,97
-Precursor_Solution_Addictive,PbI2+H2O,98
-Precursor_Solution_Addictive,PbI2+IPA,99
-Precursor_Solution_Addictive,PbI2+KI,100
-Precursor_Solution_Addictive,PbI2+KPb2Br5,101
-Precursor_Solution_Addictive,PbI2+MAAc,102
-Precursor_Solution_Addictive,PbI2+MACl,103
-Precursor_Solution_Addictive,PbI2+NH4Cl,104
-Precursor_Solution_Addictive,PbI2+OFPP,105
-Precursor_Solution_Addictive,PbI2+PU,106
-Precursor_Solution_Addictive,PbI2+PbBr2,107
-Precursor_Solution_Addictive,PbI2+PbBr2+18C6,108
-Precursor_Solution_Addictive,PbI2+PbCl2,109
-Precursor_Solution_Addictive,PbI2+TPPO,110
-Precursor_Solution_Addictive,PbI₂+ FAI+ MAI+ CsCl,111
-Precursor_Solution_Addictive,Polyurethane,112
-Precursor_Solution_Addictive,bis-DMEC60,113
-Precursor_Solution_Addictive,iBA-iBDTC,114
-Precursor_Solution_Addictive,n-butanol,115
-Precursor_Solution_Addictive,n-dodecylammonium iodide+LP+MAH2PO2+p-F-PEAI+BzH₂Cl₂+DMSO,116
-Precursor_Solution_Addictive,sulfolane,117
-Precursor_Solution_Addictive,t-BA,118
+Precursor_Solution_Addictive,MCH,74
+Precursor_Solution_Addictive,MDPPO,75
+Precursor_Solution_Addictive,Mxene,76
+Precursor_Solution_Addictive,NH3,77
+Precursor_Solution_Addictive,NH4Ac+PbAc2+HPA,78
+Precursor_Solution_Addictive,PBAI,79
+Precursor_Solution_Addictive,PHNS+BNAC,80
+Precursor_Solution_Addictive,PU,81
+Precursor_Solution_Addictive,PZ,82
+Precursor_Solution_Addictive,Pb(SCN)2,83
+Precursor_Solution_Addictive,PbCl2,84
+Precursor_Solution_Addictive,PbCl2+ Pb(Ac)2+MAI,85
+Precursor_Solution_Addictive,PbCl2+FAI,86
+Precursor_Solution_Addictive,PbCl2+MACl,87
+Precursor_Solution_Addictive,PbCl2+PbAc2,88
+Precursor_Solution_Addictive,PbI2,89
+Precursor_Solution_Addictive,PbI2+5AVAI,90
+Precursor_Solution_Addictive,PbI2+BNCl,91
+Precursor_Solution_Addictive,PbI2+CsBr+Urea,92
+Precursor_Solution_Addictive,PbI2+CsForm,93
+Precursor_Solution_Addictive,PbI2+CsI,94
+Precursor_Solution_Addictive,PbI2+CsI+MACl,95
+Precursor_Solution_Addictive,PbI2+CsPbBr3,96
+Precursor_Solution_Addictive,PbI2+Cyclen,97
+Precursor_Solution_Addictive,PbI2+DIO+MACl,98
+Precursor_Solution_Addictive,PbI2+DMPU,99
+Precursor_Solution_Addictive,PbI2+H2O,100
+Precursor_Solution_Addictive,PbI2+IPA,101
+Precursor_Solution_Addictive,PbI2+KI,102
+Precursor_Solution_Addictive,PbI2+KPb2Br5,103
+Precursor_Solution_Addictive,PbI2+MAAc,104
+Precursor_Solution_Addictive,PbI2+MACl,105
+Precursor_Solution_Addictive,PbI2+NH4Cl,106
+Precursor_Solution_Addictive,PbI2+OFPP,107
+Precursor_Solution_Addictive,PbI2+PU,108
+Precursor_Solution_Addictive,PbI2+PbBr2,109
+Precursor_Solution_Addictive,PbI2+PbBr2+18C6,110
+Precursor_Solution_Addictive,PbI2+PbCl2,111
+Precursor_Solution_Addictive,PbI2+TPPO,112
+Precursor_Solution_Addictive,PbI₂+ FAI+ MAI+ CsCl,113
+Precursor_Solution_Addictive,Polyurethane,114
+Precursor_Solution_Addictive,bis-DMEC60,115
+Precursor_Solution_Addictive,iBA-iBDTC,116
+Precursor_Solution_Addictive,n-butanol,117
+Precursor_Solution_Addictive,n-dodecylammonium iodide+LP+MAH2PO2+p-F-PEAI+BzH₂Cl₂+DMSO,118
+Precursor_Solution_Addictive,sulfolane,119
+Precursor_Solution_Addictive,t-BA,120
 Deposition_Method,Chemical vapor  deposition,0
 Deposition_Method,D-bar coating,1
 Deposition_Method,Drop casting,2
 Deposition_Method,Evaporation+blade-coating,3
 Deposition_Method,Evaporation+slot die-coating,4
-Deposition_Method,Evaporation+spin-coating,5
-Deposition_Method,blade-coating,6
-Deposition_Method,drop casting,7
-Deposition_Method,evaporation,8
-Deposition_Method,evaporation+spary-coating,9
-Deposition_Method,evaporation+spin-coating,10
-Deposition_Method,pressure application,11
-Deposition_Method,slot die-coating,12
-Deposition_Method,spin-coating,13
-Deposition_Method,spin-coating + spray-coating,14
-Deposition_Method,spray-coating,15
-Deposition_Method,spray-coating+Chemical vapor  deposition,16
+Deposition_Method,blade-coating,5
+Deposition_Method,drop casting,6
+Deposition_Method,evaporation,7
+Deposition_Method,evaporation+spary-coating,8
+Deposition_Method,evaporation+spin-coating,9
+Deposition_Method,pressure application,10
+Deposition_Method,slot die-coating,11
+Deposition_Method,spin-coating,12
+Deposition_Method,spin-coating + spray-coating,13
+Deposition_Method,spray-coating,14
+Deposition_Method,spray-coating+Chemical vapor  deposition,15
 Antisolvent,0,0
 Antisolvent,2-butanol,1
 Antisolvent,BA,2
@@ -507,15 +513,16 @@ Antisolvent,CB,3
 Antisolvent,C₄H₃BrS,4
 Antisolvent,Diethyl ether,5
 Antisolvent,EA,6
-Antisolvent,EA/Tol (1:1),7
-Antisolvent,Ethyl ether,8
-Antisolvent,IPA,9
-Antisolvent,SBS,10
-Antisolvent,Toluene+CB,11
-Antisolvent,anisole,12
-Antisolvent,n-BA,13
-Antisolvent,n-hexane,14
-Antisolvent,toluene,15
+Antisolvent,EA (MASCN),7
+Antisolvent,EA/Tol (1:1),8
+Antisolvent,Ethyl ether,9
+Antisolvent,IPA,10
+Antisolvent,SBS,11
+Antisolvent,Toluene+CB,12
+Antisolvent,anisole,13
+Antisolvent,n-BA,14
+Antisolvent,n-hexane,15
+Antisolvent,toluene,16
 Type,0,0
 Type,Parallel,1
 Type,Series,2
