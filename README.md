@@ -3,6 +3,9 @@
 ### h3 h4
 
 # h1 ML_for_Perovskite_Laser_Scribing/
+
+```text
+ML_for_Perovskite_Laser_Scribing/
 ├── data/                           # 数据目录
 │   ├── raw/                        # 原始收集数据
 │   ├── processed/                  # 清洗和特征工程后的数据
@@ -28,3 +31,4 @@
 ├── requirements.txt                # Python依赖包列表
 ├── run_pipeline.py                 # 主运行脚本（一键复现）
 └── README.md                       # 本文件
+```
