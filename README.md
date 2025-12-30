@@ -48,7 +48,7 @@ ML_for_Perovskite_Laser_Scribing/
 │   ├── deposhap<10.py                      # Importance distribution of the three mainstream deposition methods on small-area data.
 │   ├── deposhap10-100.py                   # Importance distribution of the three mainstream deposition methods on medium-area data.
 │   ├── deposhap>100.py                     # Importance distribution of the three mainstream deposition methods on large-area data.
-└── README.md                       # 本文件
+└── README.md                               # This file
 ```
 
 ## Version Notes
