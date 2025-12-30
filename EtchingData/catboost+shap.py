@@ -8,38 +8,37 @@ import matplotlib.pyplot as plt
 import warnings
 from matplotlib import rcParams
 
-# 配置设置
+
 warnings.filterwarnings('ignore')
-# 设置字体为Times New Roman
 plt.rcParams['font.family'] = 'Times New Roman'
 plt.rcParams['axes.unicode_minus'] = False
 rcParams.update({'font.size': 10})
 
-# 创建输出目录
+# Create output directory
 os.makedirs("picture", exist_ok=True)
 
-# 加载数据
+# Load data
 df = pd.read_excel("FinalData.xlsx")
 y = df['PCE']
 X = df.drop('PCE', axis=1)
 
-# 保存原始列名（用于 CatBoost）
+# Save original column names (for CatBoost)
 original_columns = X.columns.tolist()
 
-# 统一列名格式（用于其他处理）
+# Unify column name format (for other processing)
 X.columns = [col.replace(' ', '_') for col in X.columns]
 
-# 加载CatBoost模型
-print("\n加载CatBoost模型...")
+# Load CatBoost model
+print("\nLoading CatBoost model...")
 catboost_model = CatBoostRegressor()
 catboost_model.load_model("models/best_catboost_model.cbm")
-print("CatBoost模型加载成功!")
+print("CatBoost model loaded successfully!")
 
 
 def calculate_shap_values(X_data, use_original_columns=False):
-    """计算CatBoost模型的SHAP值"""
+    """Calculate SHAP values for CatBoost model"""
     if use_original_columns:
-        # 对于 CatBoost，使用原始列名
+        # For CatBoost, use original column names
         X_data_catboost = X_data.copy()
         X_data_catboost.columns = original_columns
         explainer = shap.TreeExplainer(catboost_model)
@@ -51,7 +50,7 @@ def calculate_shap_values(X_data, use_original_columns=False):
 
 
 def format_feature_name(feature_name):
-    """格式化特征名称，将特定特征替换为更友好的显示名称"""
+    """Format feature names, replacing specific features with more friendly display names"""
     replacements = {
         'FA': 'FA ratio',
         'MA': 'MA ratio',
@@ -86,11 +85,11 @@ def format_feature_name(feature_name):
 
     }
 
-    # 检查是否是完全匹配的特征名
+    # Check if it's an exact match
     if feature_name in replacements:
         return replacements[feature_name]
 
-    # 检查是否是包含这些关键词的特征名
+    # Check if it contains these keywords
     for key, replacement in replacements.items():
         if key in feature_name:
             return feature_name.replace(key, replacement)
@@ -99,47 +98,47 @@ def format_feature_name(feature_name):
 
 
 def plot_importance_bar(shap_values, X_data, filename, color):
-    """绘制重要性柱状图（带自定义颜色）"""
-    # 设置图形大小（8cm宽，高度根据特征数量调整）
+    """Plot importance bar chart (with custom color)"""
+    # Set figure size (8cm wide, height adjusted according to number of features)
     fig_width_cm = 8
-    fig_height_cm = 15  # 增加高度以容纳更多特征和避免标签被截断
+    fig_height_cm = 15  # Increase height to accommodate more features and avoid truncated labels
     fig_width_inch = fig_width_cm / 2.54
     fig_height_inch = fig_height_cm / 2.54
 
-    # 创建图形和子图，调整布局
+    # Create figure and subplot, adjust layout
     fig, ax = plt.subplots(figsize=(fig_width_inch, fig_height_inch))
 
-    # 计算平均绝对SHAP值
+    # Calculate mean absolute SHAP values
     mean_abs_shap = np.mean(np.abs(shap_values), axis=0)
     features = X_data.columns
-    sorted_idx = np.argsort(mean_abs_shap)[-20:]  # 取top20
+    sorted_idx = np.argsort(mean_abs_shap)[-20:]  # Take top20
 
-    # 格式化特征名称
+    # Format feature names
     formatted_features = [format_feature_name(features[i]) for i in sorted_idx]
 
-    # 绘制柱状图（使用指定颜色）
+    # Plot bar chart (using specified color)
     bars = ax.barh(range(len(sorted_idx)), mean_abs_shap[sorted_idx], color=color, height=0.7)
     ax.set_yticks(range(len(sorted_idx)))
     ax.set_yticklabels(formatted_features, fontname='Times New Roman')
     ax.set_xlabel('mean absolute SHAP value', fontname='Times New Roman', fontsize=10)
 
-    # 设置x轴刻度字体
+    # Set x-axis tick font
     ax.tick_params(axis='x', labelsize=9, width=0.5)
     ax.tick_params(axis='y', labelsize=9, width=0.5)
 
-    # 设置坐标轴粗细为0.5pt
+    # Set axis thickness to 0.5pt
     for spine in ax.spines.values():
         spine.set_linewidth(0.5)
 
-    # 调整布局，确保所有元素都能显示
-    plt.tight_layout(pad=2.0)  # 增加内边距
+    # Adjust layout to ensure all elements are displayed
+    plt.tight_layout(pad=2.0)  # Increase padding
 
-    # 保存图像为TIFF格式，确保所有元素都在图像内
+    # Save image as TIFF format, ensure all elements are in the image
     plt.savefig(filename, dpi=300, bbox_inches='tight', pad_inches=0.1, format='tiff')
     plt.close()
-    print(f"成功保存: {filename}")
+    print(f"Successfully saved: {filename}")
 
-    # 返回特征重要性数据，用于后续分析
+    # Return feature importance data for subsequent analysis
     importance_df = pd.DataFrame({
         'feature': features,
         'mean_abs_shap': mean_abs_shap
@@ -149,8 +148,8 @@ def plot_importance_bar(shap_values, X_data, filename, color):
 
 
 def plot_laser_scribing_importance(shap_values, X_data, filename):
-    """绘制激光划刻参数重要性排序柱状图"""
-    # 定义激光划刻参数列表 - 修改：使用下划线格式的特征名
+    """Plot laser scribing parameter importance sorted bar chart"""
+    # Define laser scribing feature list - modified: use underscore format feature names
     laser_scribing_features = [
         'P1Wavelength(nm)',
         'P2Wavelength(nm)',
@@ -161,17 +160,17 @@ def plot_laser_scribing_importance(shap_values, X_data, filename):
         'P3Width(μm)',
         'GFF',
         'P1Scan_Velocity(mm/s)',
-        'P1Spot_Size(μm)',  # 改为下划线
+        'P1Spot_Size(μm)',  # Changed to underscore
         'P1etching_frequency(kHz)',
         'P1etching_Power(W)',
         'P1etching_Power_percentage(%)',
         'P2Scan_Velocity',
-        'P2Spot_Size(μm)',  # 改为下划线
+        'P2Spot_Size(μm)',  # Changed to underscore
         'P2etching_frequency(kHz)',
         'P2etching_Power(W)',
         'P2etching_Power_percentage(%)',
         'P3Scan_Velocity',
-        'P3Spot_Size(μm)',  # 改为下划线
+        'P3Spot_Size(μm)',  # Changed to underscore
         'P3etching_frequency(kHz)',
         'P3etching_Power(W)',
         'P3etching_Power_percentage(%)',
@@ -182,76 +181,76 @@ def plot_laser_scribing_importance(shap_values, X_data, filename):
         'Type'
     ]
 
-    # 添加调试信息：打印所有激光划刻特征和实际数据中的特征
-    print("\n=== 激光划刻特征匹配调试 ===")
-    print("激光划刻特征列表:")
+    # Add debugging information: print all laser scribing features and actual features in data
+    print("\n=== Laser Scribing Feature Matching Debug ===")
+    print("Laser scribing feature list:")
     for feature in laser_scribing_features:
         print(f"  - {feature}")
 
-    print("\n数据中的特征（前30个）:")
+    print("\nFeatures in data (first 30):")
     for i, feature in enumerate(X_data.columns[:30]):
         print(f"  {i + 1}. {feature}")
 
-    # 查找与激光划刻相关的所有特征
-    print("\n查找包含以下关键词的特征:")
+    # Find all features related to laser scribing
+    print("\nFinding features containing the following keywords:")
     laser_keywords = ['P1', 'P2', 'P3', 'Spot', 'Size', 'Width', 'Wavelength', 'Scan', 'Velocity', 'etching', 'Power',
                       'frequency', 'Spacing']
     for keyword in laser_keywords:
         matching_features = [f for f in X_data.columns if keyword.lower() in f.lower()]
         if matching_features:
-            print(f"关键词 '{keyword}': {matching_features}")
+            print(f"Keyword '{keyword}': {matching_features}")
 
-    # 筛选存在于数据中的激光划刻参数
+    # Filter laser scribing parameters that exist in the data
     available_laser_features = [f for f in laser_scribing_features if f in X_data.columns]
-    print(f"\n找到 {len(available_laser_features)} 个激光划刻参数:")
+    print(f"\nFound {len(available_laser_features)} laser scribing parameters:")
     for f in available_laser_features:
         print(f"  - {f}")
 
-    # 如果某些特征没找到，尝试使用更灵活的方式查找
+    # If some features are not found, try using a more flexible search method
     missing_features = [f for f in laser_scribing_features if f not in X_data.columns]
     if missing_features:
-        print(f"\n未直接找到的特征: {missing_features}")
-        print("尝试使用部分匹配查找...")
+        print(f"\nFeatures not directly found: {missing_features}")
+        print("Trying partial matching...")
         for missing_feature in missing_features:
-            # 移除单位部分进行匹配
+            # Remove unit part for matching
             base_name = missing_feature.split('(')[0] if '(' in missing_feature else missing_feature
             matching = [f for f in X_data.columns if base_name.lower() in f.lower()]
             if matching:
-                print(f"  对于 '{missing_feature}'，找到可能匹配的特征: {matching}")
-                # 使用第一个匹配
+                print(f"  For '{missing_feature}', found possible matching features: {matching}")
+                # Use first match
                 available_laser_features.extend(matching[:1])
 
-    # 设置图形大小
+    # Set figure size
     fig_width_cm = 10
     fig_height_cm = 12
     fig_width_inch = fig_width_cm / 2.54
     fig_height_inch = fig_height_cm / 2.54
 
-    # 创建图形和子图
+    # Create figure and subplot
     fig, ax = plt.subplots(figsize=(fig_width_inch, fig_height_inch))
 
-    # 计算平均绝对SHAP值
+    # Calculate mean absolute SHAP values
     mean_abs_shap = np.mean(np.abs(shap_values), axis=0)
     features = X_data.columns
 
-    # 获取激光划刻参数的重要性
+    # Get importance of laser scribing parameters
     laser_importance = []
     for feature in available_laser_features:
         if feature in features:
             idx = list(features).index(feature)
             laser_importance.append((feature, mean_abs_shap[idx]))
 
-    # 按重要性排序
+    # Sort by importance
     laser_importance.sort(key=lambda x: x[1], reverse=True)
 
-    # 准备绘图数据
+    # Prepare plot data
     laser_features = [item[0] for item in laser_importance]
     laser_values = [item[1] for item in laser_importance]
 
-    # 格式化特征名称
+    # Format feature names
     formatted_laser_features = [format_feature_name(feature) for feature in laser_features]
 
-    # 绘制柱状图 - 修改：添加边框和调整样式
+    # Plot bar chart - modified: add border and adjust style
     bars = ax.barh(range(len(laser_features)), laser_values,
                    color='#1f77b4', height=0.7, edgecolor='black', linewidth=0.8)
 
@@ -260,23 +259,23 @@ def plot_laser_scribing_importance(shap_values, X_data, filename):
     ax.set_xlabel('mean(|SHAP value|)', fontname='Times New Roman', fontsize=10)
     # ax.set_title('Laser Scribing Parameters Importance', fontname='Times New Roman', fontsize=12)
 
-    # 修改：设置坐标轴刻度方向向里，宽度为0.8pt
+    # Modified: Set axis tick direction inward, width 0.8pt
     ax.tick_params(axis='x', labelsize=9, direction='in', width=0.8)
     ax.tick_params(axis='y', labelsize=9, direction='in', width=0.8)
 
-    # 修改：设置坐标轴边框为0.8pt
+    # Modified: Set axis border to 0.8pt
     for spine in ax.spines.values():
         spine.set_linewidth(0.8)
 
-    # 调整布局
+    # Adjust layout
     plt.tight_layout(pad=2.0)
 
-    # 保存为TIFF格式
+    # Save as TIFF format
     plt.savefig(filename, dpi=300, bbox_inches='tight', pad_inches=0.1, format='tiff')
     plt.close()
-    print(f"成功保存激光划刻参数重要性图: {filename}")
+    print(f"Successfully saved laser scribing parameter importance chart: {filename}")
 
-    # 返回激光划刻参数重要性数据
+    # Return laser scribing parameter importance data
     laser_importance_df = pd.DataFrame({
         'feature': laser_features,
         'mean_abs_shap': laser_values
@@ -285,53 +284,53 @@ def plot_laser_scribing_importance(shap_values, X_data, filename):
     return laser_importance_df
 
 
-# 颜色配置
+# Color configuration
 COLOR_CONFIG = {
-    "all": '#046B38',  # 绿色
-    "small_area": '#1f77b4',  # 蓝色
-    "medium_area": '#ff7f0e',  # 橙色
-    "large_area": '#d62728'  # 红色
+    "all": '#046B38',  # Green
+    "small_area": '#1f77b4',  # Blue
+    "medium_area": '#ff7f0e',  # Orange
+    "large_area": '#d62728'  # Red
 }
 
-# 分析所有数据
-print("\n分析所有数据...")
-# 对于 CatBoost，使用原始列名
+# Analyze all data
+print("\nAnalyzing all data...")
+# For CatBoost, use original column names
 shap_values_all = calculate_shap_values(X, use_original_columns=True)
 importance_df_all = plot_importance_bar(
     shap_values_all,
-    X,  # 这里使用修改后的列名
-    "picture/shap_top20_all_catboost.tif",  # 改为TIFF格式
+    X,  # Here use modified column names
+    "picture/shap_top20_all_catboost.tif",  # Changed to TIFF format
     COLOR_CONFIG["all"]
 )
 
-# 绘制激光划刻参数重要性图
-print("\n绘制激光划刻参数重要性图...")
+# Plot laser scribing parameter importance chart
+print("\nPlotting laser scribing parameter importance chart...")
 laser_importance_df = plot_laser_scribing_importance(
     shap_values_all,
     X,
     "picture/laser_scribing_importance.tif"
 )
 
-# 根据Active_Area分组
-active_area_col = df.columns[df.columns.str.contains('Active_Area', case=False)][0]  # 找到Active_Area列名
-print(f"\nActive_Area列名为: {active_area_col}")
+# Group by Active_Area
+active_area_col = df.columns[df.columns.str.contains('Active_Area', case=False)][0]  # Find Active_Area column name
+print(f"\nActive_Area column name: {active_area_col}")
 
-# 分组条件
+# Grouping conditions
 small_area_mask = (df[active_area_col] >= 1) & (df[active_area_col] < 10)
 medium_area_mask = (df[active_area_col] >= 10) & (df[active_area_col] < 100)
 large_area_mask = df[active_area_col] >= 100
 
-print(f"小面积组 (1-10): {sum(small_area_mask)} 个样本")
-print(f"中面积组 (10-100): {sum(medium_area_mask)} 个样本")
-print(f"大面积组 (>=100): {sum(large_area_mask)} 个样本")
+print(f"Small area group (1-10): {sum(small_area_mask)} samples")
+print(f"Medium area group (10-100): {sum(medium_area_mask)} samples")
+print(f"Large area group (>=100): {sum(large_area_mask)} samples")
 
-# 分析小面积组 (1 <= Active_Area < 10)
+# Analyze small area group (1 <= Active_Area < 10)
 if sum(small_area_mask) > 0:
-    print("\n分析小面积组 (1 <= Active_Area < 10)...")
+    print("\nAnalyzing small area group (1 <= Active_Area < 10)...")
     X_small = X[small_area_mask]
     y_small = y[small_area_mask]
 
-    # 重新构建Pool数据以确保列名匹配
+    # Rebuild Pool data to ensure column name matching
     X_small_original = X_small.copy()
     X_small_original.columns = original_columns
     shap_values_small = calculate_shap_values(X_small_original, use_original_columns=True)
@@ -339,20 +338,20 @@ if sum(small_area_mask) > 0:
     importance_df_small = plot_importance_bar(
         shap_values_small,
         X_small,
-        "picture/shap_top20_small_area_catboost.tif",  # 改为TIFF格式
+        "picture/shap_top20_small_area_catboost.tif",  # Changed to TIFF format
         COLOR_CONFIG["small_area"]
     )
 else:
-    print("\n小面积组 (1 <= Active_Area < 10) 无数据")
+    print("\nSmall area group (1 <= Active_Area < 10) has no data")
     importance_df_small = None
 
-# 分析中面积组 (10 <= Active_Area < 100)
+# Analyze medium area group (10 <= Active_Area < 100)
 if sum(medium_area_mask) > 0:
-    print("\n分析中面积组 (10 <= Active_Area < 100)...")
+    print("\nAnalyzing medium area group (10 <= Active_Area < 100)...")
     X_medium = X[medium_area_mask]
     y_medium = y[medium_area_mask]
 
-    # 重新构建Pool数据以确保列名匹配
+    # Rebuild Pool data to ensure column name matching
     X_medium_original = X_medium.copy()
     X_medium_original.columns = original_columns
     shap_values_medium = calculate_shap_values(X_medium_original, use_original_columns=True)
@@ -360,20 +359,20 @@ if sum(medium_area_mask) > 0:
     importance_df_medium = plot_importance_bar(
         shap_values_medium,
         X_medium,
-        "picture/shap_top20_medium_area_catboost.tif",  # 改为TIFF格式
+        "picture/shap_top20_medium_area_catboost.tif",  # Changed to TIFF format
         COLOR_CONFIG["medium_area"]
     )
 else:
-    print("\n中面积组 (10 <= Active_Area < 100) 无数据")
+    print("\nMedium area group (10 <= Active_Area < 100) has no data")
     importance_df_medium = None
 
-# 分析大面积组 (Active_Area >= 100)
+# Analyze large area group (Active_Area >= 100)
 if sum(large_area_mask) > 0:
-    print("\n分析大面积组 (Active_Area >= 100)...")
+    print("\nAnalyzing large area group (Active_Area >= 100)...")
     X_large = X[large_area_mask]
     y_large = y[large_area_mask]
 
-    # 重新构建Pool数据以确保列名匹配
+    # Rebuild Pool data to ensure column name matching
     X_large_original = X_large.copy()
     X_large_original.columns = original_columns
     shap_values_large = calculate_shap_values(X_large_original, use_original_columns=True)
@@ -381,71 +380,71 @@ if sum(large_area_mask) > 0:
     importance_df_large = plot_importance_bar(
         shap_values_large,
         X_large,
-        "picture/shap_top20_large_area_catboost.tif",  # 改为TIFF格式
+        "picture/shap_top20_large_area_catboost.tif",  # Changed to TIFF format
         COLOR_CONFIG["large_area"]
     )
 else:
-    print("\n大面积组 (Active_Area >= 100) 无数据")
+    print("\nLarge area group (Active_Area >= 100) has no data")
     importance_df_large = None
 
-# 保存所有特征重要性数据到CSV
+# Save all feature importance data to CSV
 importance_df_all.to_csv("picture/feature_importance_all_catboost.csv", index=False)
-print("全部数据特征重要性已保存到: picture/feature_importance_all_catboost.csv")
+print("All data feature importance saved to: picture/feature_importance_all_catboost.csv")
 
-# 保存激光划刻参数重要性数据到CSV
+# Save laser scribing parameter importance data to CSV
 laser_importance_df.to_csv("picture/laser_scribing_importance.csv", index=False)
-print("激光划刻参数重要性已保存到: picture/laser_scribing_importance.csv")
+print("Laser scribing parameter importance saved to: picture/laser_scribing_importance.csv")
 
 if importance_df_small is not None:
     importance_df_small.to_csv("picture/feature_importance_small_area_catboost.csv", index=False)
-    print("小面积组特征重要性已保存到: picture/feature_importance_small_area_catboost.csv")
+    print("Small area group feature importance saved to: picture/feature_importance_small_area_catboost.csv")
 
 if importance_df_medium is not None:
     importance_df_medium.to_csv("picture/feature_importance_medium_area_catboost.csv", index=False)
-    print("中面积组特征重要性已保存到: picture/feature_importance_medium_area_catboost.csv")
+    print("Medium area group feature importance saved to: picture/feature_importance_medium_area_catboost.csv")
 
 if importance_df_large is not None:
     importance_df_large.to_csv("picture/feature_importance_large_area_catboost.csv", index=False)
-    print("大面积组特征重要性已保存到: picture/feature_importance_large_area_catboost.csv")
+    print("Large area group feature importance saved to: picture/feature_importance_large_area_catboost.csv")
 
-# 打印各组前20个最重要的特征
-print("\n=== 全部数据 Top 20 最重要特征 ===")
+# Print top 20 most important features for each group
+print("\n=== All Data Top 20 Most Important Features ===")
 for i, (feature, importance) in enumerate(
         zip(importance_df_all['feature'][:20], importance_df_all['mean_abs_shap'][:20]), 1):
     print(f"{i}. {feature}: {importance:.6f}")
 
-# 打印激光划刻参数重要性
-print("\n=== 激光划刻参数重要性排序 ===")
+# Print laser scribing parameter importance
+print("\n=== Laser Scribing Parameter Importance Ranking ===")
 for i, (feature, importance) in enumerate(
         zip(laser_importance_df['feature'], laser_importance_df['mean_abs_shap']), 1):
     print(f"{i}. {feature}: {importance:.6f}")
 
 if importance_df_small is not None:
-    print("\n=== 小面积组 (1-10) Top 20 最重要特征 ===")
+    print("\n=== Small Area Group (1-10) Top 20 Most Important Features ===")
     for i, (feature, importance) in enumerate(
             zip(importance_df_small['feature'][:20], importance_df_small['mean_abs_shap'][:20]), 1):
         print(f"{i}. {feature}: {importance:.6f}")
 
 if importance_df_medium is not None:
-    print("\n=== 中面积组 (10-100) Top 20 最重要特征 ===")
+    print("\n=== Medium Area Group (10-100) Top 20 Most Important Features ===")
     for i, (feature, importance) in enumerate(
             zip(importance_df_medium['feature'][:20], importance_df_medium['mean_abs_shap'][:20]), 1):
         print(f"{i}. {feature}: {importance:.6f}")
 
 if importance_df_large is not None:
-    print("\n=== 大面积组 (>=100) Top 20 最重要特征 ===")
+    print("\n=== Large Area Group (>=100) Top 20 Most Important Features ===")
     for i, (feature, importance) in enumerate(
             zip(importance_df_large['feature'][:20], importance_df_large['mean_abs_shap'][:20]), 1):
         print(f"{i}. {feature}: {importance:.6f}")
 
-print("\n=== 分析完成 ===")
-print("生成的TIFF图片文件:")
+print("\n=== Analysis Completed ===")
+print("Generated TIFF image files:")
 print("- picture/shap_top20_all_catboost.tif")
 print("- picture/laser_scribing_importance.tif")
 print("- picture/shap_top20_small_area_catboost.tif")
 print("- picture/shap_top20_medium_area_catboost.tif")
 print("- picture/shap_top20_large_area_catboost.tif")
-print("生成的数据文件:")
+print("Generated data files:")
 print("- picture/feature_importance_all_catboost.csv")
 print("- picture/laser_scribing_importance.csv")
 print("- picture/feature_importance_small_area_catboost.csv")

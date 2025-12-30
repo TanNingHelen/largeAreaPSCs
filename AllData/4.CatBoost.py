@@ -12,22 +12,22 @@ import seaborn as sns
 import pandas as pd
 from letsplotT import myscatterplot
 
-# 创建必要的目录
+# Create necessary directories
 os.makedirs("picture_predict", exist_ok=True)
 os.makedirs("models", exist_ok=True)
 os.makedirs("img", exist_ok=True)
 
-# 加载数据
+# Load data
 df1 = pd.read_excel(r"FinalDataAll.xlsx")
 Y = df1['PCE']
 X = df1.drop(['PCE'], axis=1)
 
-# CatBoost不需要标准化，直接使用原始数据
+# CatBoost doesn't require standardization, use raw data directly
 X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.2, random_state=12)
 
-# 检查是否已有保存的模型
+# Check if saved model already exists
 MODEL_PATH = "models/best_catboost_model.pkl"
-grid_search = None  # 用于保存网格搜索对象
+grid_search = None  # For saving grid search object
 
 if os.path.exists(MODEL_PATH):
     print("Loading pre-trained CatBoost model...")
@@ -35,32 +35,20 @@ if os.path.exists(MODEL_PATH):
 else:
     print("Training new CatBoost model...")
 
-    # 定义CatBoost参数网格，总训练次数控制在500以内
-    # 计算：参数组合数 × 10 ≤ 500 → 参数组合数 ≤ 50
+    # Define CatBoost parameter grid, total training runs controlled within 500
+    # Calculation: parameter combinations × 10 ≤ 500 → parameter combinations ≤ 50
     param_grid = {
-        'iterations': [100, 200, 300],  # 3个选项
-        'depth': [4, 6, 8],  # 3个选项
-        'learning_rate': [0.01, 0.05, 0.1],  # 3个选项
-        'l2_leaf_reg': [1, 3, 5],  # 3个选项
-        'random_strength': [0.1, 1]  # 2个选项
+        'iterations': [100, 200],  # 2 options
+        'depth': [4, 6, 8],  # 3 options
+        'learning_rate': [0.01, 0.05, 0.1],  # 3 options
+        'l2_leaf_reg': [1, 3],  # 2 options
+        'random_strength': [1]  # 1 option
     }
 
-    # 总参数组合数: 3 × 3 × 3 × 3 × 2 = 162
-    # 总训练次数: 162 × 10 = 1620 > 500
+    # Total parameter combinations: 2 × 3 × 3 × 2 × 1 = 36
+    # Total training runs: 36 × 10 = 360 < 500
 
-    # 需要减少参数组合
-    param_grid = {
-        'iterations': [100, 200],  # 2个选项
-        'depth': [4, 6, 8],  # 3个选项
-        'learning_rate': [0.01, 0.05, 0.1],  # 3个选项
-        'l2_leaf_reg': [1, 3],  # 2个选项
-        'random_strength': [1]  # 1个选项
-    }
-
-    # 总参数组合数: 2 × 3 × 3 × 2 × 1 = 36
-    # 总训练次数: 36 × 10 = 360 < 500
-
-    # 计算总参数组合数
+    # Calculate total parameter combinations
     total_combinations = 1
     for values in param_grid.values():
         total_combinations *= len(values)
@@ -68,14 +56,14 @@ else:
     print(f"Total parameter combinations: {total_combinations}")
     print(f"Total training runs (with 10-fold CV): {total_training_runs}")
 
-    # 创建基础CatBoost模型
+    # Create base CatBoost model
     cb = CatBoostRegressor(
         random_seed=42,
-        verbose=False,  # 减少训练时的输出
-        thread_count=-1  # 使用所有CPU核心
+        verbose=False,  # Reduce output during training
+        thread_count=-1  # Use all CPU cores
     )
 
-    # 10折交叉验证
+    # 10-fold cross-validation
     cv = KFold(n_splits=10, shuffle=True, random_state=42)
 
     grid_search = GridSearchCV(
@@ -88,19 +76,19 @@ else:
         return_train_score=True
     )
 
-    print("开始CatBoost模型训练...")
+    print("Starting CatBoost model training...")
     grid_search.fit(X_train, y_train)
 
     best_cb = grid_search.best_estimator_
 
-    # 保存模型
+    # Save model
     joblib.dump(best_cb, MODEL_PATH)
 
     print("\n=== Best Parameters ===")
     print(grid_search.best_params_)
     print(f"Best CV R²: {grid_search.best_score_:.4f}")
 
-    # 输出交叉验证结果
+    # Output cross-validation results
     results_df = pd.DataFrame(grid_search.cv_results_)
     print("\nTop 5 parameter combinations:")
     top_5 = results_df.nlargest(5, 'mean_test_score')[
@@ -110,12 +98,12 @@ else:
         print(f"R²: {row['mean_test_score']:.4f} ± {row['std_test_score']:.4f}")
         print(f"  Params: {row['params']}")
 
-# 预测结果
+# Prediction results
 y_train_pred = best_cb.predict(X_train)
 y_test_pred = best_cb.predict(X_test)
 
 
-# ========== 评估指标部分 ==========
+# ========== Evaluation Metrics Section ==========
 def calculate_metrics(y_true, y_pred):
     r = np.corrcoef(y_true, y_pred)[0, 1]
     r2 = r2_score(y_true, y_pred)
@@ -139,7 +127,7 @@ print(f"R²: {test_r2:.4f}")
 print(f"MAE: {test_mae:.4f}")
 print(f"RMSE: {test_rmse:.4f}")
 
-# 使用myscatterplot绘图
+# Use myscatterplot for plotting
 try:
     myscatterplot(
         y_train.values,
@@ -155,7 +143,7 @@ try:
     print("Plot saved to: img/CatBoost_PCE_prediction.png")
 except Exception as e:
     print(f"Error using myscatterplot: {str(e)}")
-    # 备用绘图方案
+    # Alternative plotting solution
     plt.figure(figsize=(10, 8))
     plt.scatter(y_train, y_train_pred, color='#E48963', s=80, alpha=0.7, edgecolor='k', linewidth=0.5, label='Train')
     plt.scatter(y_test, y_test_pred, color='#1458C4', s=80, alpha=0.7, edgecolor='k', linewidth=0.5, marker='D',
@@ -178,59 +166,55 @@ except Exception as e:
     plt.close()
     print("Custom plot saved to: picture_predict/CatBoost_PCE_prediction.png")
 
-# 输出最佳模型的详细参数
+# Output detailed parameters of best model
 print("\n" + "=" * 60)
 print("CATBOOST MODEL DETAILED PARAMETERS")
 print("=" * 60)
 
-# 获取模型的所有参数
+# Get all parameters of the model
 model_params = best_cb.get_all_params()
 
-# 分类显示参数
-print("\n=== 核心超参数 ===")
+# Display parameters by category
+print("\n=== Core Hyperparameters ===")
 core_params = ['iterations', 'depth', 'learning_rate', 'l2_leaf_reg',
                'random_strength', 'bagging_temperature', 'border_count']
 for param in core_params:
     if param in model_params:
         print(f"{param}: {model_params[param]}")
 
-print("\n=== 训练控制参数 ===")
+print("\n=== Training Control Parameters ===")
 training_params = ['random_seed', 'thread_count', 'verbose', 'task_type',
                    'loss_function', 'eval_metric', 'early_stopping_rounds']
 for param in training_params:
     if param in model_params:
         print(f"{param}: {model_params[param]}")
 
-print("\n=== 过拟合控制参数 ===")
+print("\n=== Overfitting Control Parameters ===")
 overfit_params = ['rsm', 'od_type', 'od_pval', 'od_wait', 'max_ctr_complexity']
 for param in overfit_params:
     if param in model_params:
         print(f"{param}: {model_params[param]}")
 
-print("\n=== 特征处理参数 ===")
+print("\n=== Feature Processing Parameters ===")
 feature_params = ['cat_features', 'one_hot_max_size', 'feature_border_type', 'nan_mode']
 for param in feature_params:
     if param in model_params:
         print(f"{param}: {model_params[param]}")
 
-# 如果是网格搜索得到的模型，显示网格搜索信息
+# If model was obtained through grid search, display grid search information
 if grid_search is not None:
-    print("\n=== 网格搜索信息 ===")
-    print(f"最佳参数: {grid_search.best_params_}")
-    print(f"最佳交叉验证分数 (R²): {grid_search.best_score_:.4f}")
-    print(f"搜索的参数组合总数: {len(grid_search.cv_results_['params'])}")
+    print("\n=== Grid Search Information ===")
+    print(f"Best parameters: {grid_search.best_params_}")
+    print(f"Best cross-validation score (R²): {grid_search.best_score_:.4f}")
+    print(f"Total parameter combinations searched: {len(grid_search.cv_results_['params'])}")
 
-    # 显示前5个最佳参数组合
-    print("\n=== 前5个最佳参数组合 ===")
+    # Display top 5 best parameter combinations
+    print("\n=== Top 5 Best Parameter Combinations ===")
     results_df = pd.DataFrame(grid_search.cv_results_)
     top_5 = results_df.nlargest(5, 'mean_test_score')
     for i, (_, row) in enumerate(top_5.iterrows()):
         print(f"Rank {i + 1}: R² = {row['mean_test_score']:.4f} ± {row['std_test_score']:.4f}")
         print(f"  Parameters: {row['params']}")
 else:
-    print("\n=== 模型来源 ===")
-    print("模型从文件加载，未进行新的网格搜索")
-
-
-
-
+    print("\n=== Model Source ===")
+    print("Model loaded from file, no new grid search performed")

@@ -7,13 +7,13 @@ import matplotlib.pyplot as plt
 from matplotlib import rcParams
 import matplotlib as mpl
 
-# ============== 配置部分 ==============
-# 字体设置 - 改为 Times New Roman
+# ============== Configuration Section ==============
+
 rcParams['font.family'] = 'Times New Roman'
 rcParams['axes.unicode_minus'] = False
-rcParams.update({'font.size': 12})  # 增加全局字体大小
+rcParams.update({'font.size': 12})
 
-# 特征名称映射字典
+# Feature name mapping dictionary
 FEATURE_ALIASES = {
     'FA': 'FA ratio',
     'MA': 'MA ratio',
@@ -32,7 +32,7 @@ FEATURE_ALIASES = {
 
 }
 
-# 模型权重配置 (基于R²表现)
+# Model weight configuration (based on R² performance)
 MODEL_WEIGHTS = {
     'lgbm': 0.7446,
     'rf': 0.6892,
@@ -40,121 +40,121 @@ MODEL_WEIGHTS = {
     'xgboost': 0.7630
 }
 
-# 归一化权重
+# Normalize weights
 total_weight = sum(MODEL_WEIGHTS.values())
 for model in MODEL_WEIGHTS:
     MODEL_WEIGHTS[model] /= total_weight
 
-print("模型权重配置:")
+print("Model weight configuration:")
 for model, weight in MODEL_WEIGHTS.items():
     print(f"  {model}: {weight:.4f}")
 
-# ============== 读取数据和映射文件 ==============
+# ============== Read data and mapping file ==============
 df = pd.read_excel("FinalDataAll.xlsx")
 mapping_df = pd.read_csv("label_mappings/full_mapping_summary.csv")
 
-# 获取沉积方法的映射关系
+# Get deposition method mapping relationship
 deposition_mapping_df = mapping_df[mapping_df['Feature'] == 'Deposition_Method']
 method_mapping = dict(zip(deposition_mapping_df['Original'], deposition_mapping_df['Encoded']))
-# 创建反向映射字典（编码值到原始名称）
+# Create reverse mapping dictionary (encoded value to original name)
 reverse_method_mapping = dict(zip(deposition_mapping_df['Encoded'], deposition_mapping_df['Original']))
 
-# 定义要分析的三种沉积方法
+# Define three deposition methods to analyze
 target_methods = ['slot die-coating', 'spin-coating', 'blade-coating']
 target_encoded = [method_mapping[method] for method in target_methods]
 
-# 修改：筛选Active_Area >= 10 且 < 100的数据
+# Modification: Filter data with Active_Area >= 10 and < 100
 filtered_df = df[(df['Active_Area'] >= 10) & (df['Active_Area'] < 100)].copy()
-print(f"筛选后数据量: {len(filtered_df)}条记录 (10 ≤ Active_Area < 100)")
+print(f"Filtered data size: {len(filtered_df)} records (10 ≤ Active_Area < 100)")
 
-# ============== 计算各类沉积方式数量 ==============
-print("计算各类沉积方式数量...")
+# ============== Calculate counts for each deposition method ==============
+print("Calculating counts for each deposition method...")
 
-# 统计各类沉积方式的数量
+# Count number of each deposition method
 deposition_counts = filtered_df['Deposition_Method'].value_counts().reset_index()
 deposition_counts.columns = ['Encoded_Method', 'Count']
 
-# 将编码值映射回原始名称
+# Map encoded values back to original names
 deposition_counts['Method_Name'] = deposition_counts['Encoded_Method'].map(reverse_method_mapping)
 
-# 打印统计结果
-print("\n=== 各类沉积方式数量 (10 ≤ Active_Area < 100) ===")
+# Print statistical results
+print("\n=== Counts of each deposition method (10 ≤ Active_Area < 100) ===")
 for _, row in deposition_counts.iterrows():
-    print(f"{row['Method_Name']} (编码: {row['Encoded_Method']}): {row['Count']}条记录")
+    print(f"{row['Method_Name']} (code: {row['Encoded_Method']}): {row['Count']} records")
 
-# 保存统计结果到CSV
+# Save statistical results to CSV
 deposition_counts.to_csv('deposition_methods_count_active_area_10_100.csv', index=False)
-print("\n沉积方式数量统计已保存到: deposition_methods_count_active_area_10_100.csv")
+print("\nDeposition method count statistics saved to: deposition_methods_count_active_area_10_100.csv")
 
-# ============== 准备数据 ==============
-print("\n准备数据...")
+# ============== Prepare data ==============
+print("\nPreparing data...")
 
-# 准备完整的特征和目标变量
+# Prepare complete features and target variable
 X_full = filtered_df.drop(['PCE'], axis=1)
 y_full = filtered_df['PCE']
 
-# ============== 加载预训练模型 ==============
-print("加载预训练的集成模型...")
+# ============== Load pre-trained models ==============
+print("Loading pre-trained ensemble models...")
 
-# 定义模型路径
+# Define model paths
 model_paths = {
     'xgboost': "models/best_xgb_model.pkl",
     'lgbm': "models/best_lgbm_model.pkl",
     'rf': "models/best_rf_model.pkl",
-    'catboost': "models/best_catboost_model.pkl"  # 根据您提供的路径
+    'catboost': "models/best_catboost_model.pkl"  # Based on your provided path
 }
 
-# 加载所有模型
+# Load all models
 models = {}
 for model_name, model_path in model_paths.items():
     if not os.path.exists(model_path):
-        print(f"警告: 找不到模型文件: {model_path}")
+        print(f"Warning: Cannot find model file: {model_path}")
         continue
 
     try:
         model = joblib.load(model_path)
         models[model_name] = model
-        print(f"✅ {model_name} 模型加载成功: {model_path}")
+        print(f"✅ {model_name} model loaded successfully: {model_path}")
     except Exception as e:
-        print(f"❌ 加载 {model_name} 模型时出错: {e}")
+        print(f"❌ Error loading {model_name} model: {e}")
 
 if not models:
-    raise FileNotFoundError("没有成功加载任何模型！")
+    raise FileNotFoundError("No models loaded successfully!")
 
 
-# ============== SHAP计算 ==============
+# ============== SHAP calculation ==============
 def calculate_shap_values(model, X, model_type):
-    """计算单个模型的SHAP值"""
+    """Calculate SHAP values for a single model"""
     try:
         print(f"Calculating SHAP for {model_type}...")
 
-        # 根据模型类型选择合适的解释器
+        # Choose appropriate explainer based on model type
         if model_type in ['xgboost', 'lgbm', 'rf', 'catboost']:
             explainer = shap.TreeExplainer(model)
         else:
             explainer = shap.Explainer(model)
 
-        # 计算SHAP值
+        # Calculate SHAP values
         shap_values_obj = explainer(X)
         shap_values = shap_values_obj.values
 
-        # 处理多维SHAP值
+        # Handle multi-dimensional SHAP values
         if shap_values.ndim == 3:
             if shap_values.shape[2] == 1:
                 shap_values = shap_values[:, :, 0]
             else:
-                print(f"警告: SHAP值是三维的 (shape: {shap_values.shape}), 取第一个维度。")
+                print(f"Warning: SHAP values are three-dimensional (shape: {shap_values.shape}), taking first dimension.")
                 shap_values = shap_values[:, :, 0]
 
         return shap_values
 
     except Exception as e:
-        print(f"{model_type} SHAP计算失败: {str(e)}")
+        print(f"{model_type} SHAP calculation failed: {str(e)}")
         return None
 
 
 def calculate_ensemble_shap(X_method, feature_names):
-    """计算集成模型的加权SHAP值"""
+    """Calculate weighted SHAP values for ensemble model"""
     ensemble_shap_values = None
     total_weight = 0
 
@@ -162,7 +162,7 @@ def calculate_ensemble_shap(X_method, feature_names):
         if model_name not in MODEL_WEIGHTS:
             continue
 
-        # 确保数据列顺序与模型期望一致
+        # Ensure data column order matches model expectations
         try:
             if hasattr(model, 'get_booster'):  # XGBoost
                 expected_features = model.get_booster().feature_names
@@ -178,7 +178,7 @@ def calculate_ensemble_shap(X_method, feature_names):
         except:
             X_aligned = X_method.reindex(columns=feature_names)
 
-        # 计算当前模型的SHAP值
+        # Calculate SHAP values for current model
         shap_values = calculate_shap_values(model, X_aligned, model_name)
 
         if shap_values is not None:
@@ -192,39 +192,39 @@ def calculate_ensemble_shap(X_method, feature_names):
             total_weight += weight
 
     if ensemble_shap_values is not None and total_weight > 0:
-        # 归一化
+        # Normalize
         ensemble_shap_values /= total_weight
         return ensemble_shap_values
     else:
         return None
 
 
-# ============== 主程序 ==============
-print("开始分析三种沉积方法的SHAP重要性 (使用集成模型, 10 ≤ Active_Area < 100)...")
+# ============== Main program ==============
+print("Starting SHAP importance analysis for three deposition methods (using ensemble model, 10 ≤ Active_Area < 100)...")
 
-# 获取特征名
+# Get feature names
 feature_names = X_full.columns.tolist()
-print(f"使用的特征数量: {len(feature_names)}")
+print(f"Number of features used: {len(feature_names)}")
 
-# 为每种沉积方法计算SHAP值
+# Calculate SHAP values for each deposition method
 shap_results = {}
 
 for method_name, encoded_value in zip(target_methods, target_encoded):
-    print(f"\n分析 {method_name} (编码值: {encoded_value})...")
+    print(f"\nAnalyzing {method_name} (encoded value: {encoded_value})...")
 
-    # 筛选当前方法的数据
+    # Filter data for current method
     method_data = filtered_df[filtered_df['Deposition_Method'] == encoded_value].copy()
 
     if len(method_data) < 5:
-        print(f"数据量不足({len(method_data)}条)，跳过 {method_name}")
+        print(f"Insufficient data ({len(method_data)} records), skipping {method_name}")
         continue
 
     X_method = method_data.drop(['PCE'], axis=1)
 
-    print(f"  用于SHAP计算的数据形状: {X_method.shape}")
+    print(f"  Data shape for SHAP calculation: {X_method.shape}")
 
     try:
-        # 计算集成SHAP值
+        # Calculate ensemble SHAP values
         ensemble_shap_values = calculate_ensemble_shap(X_method, feature_names)
 
         if ensemble_shap_values is not None:
@@ -237,15 +237,15 @@ for method_name, encoded_value in zip(target_methods, target_encoded):
                 'features': X_method.columns.tolist()
             }
 
-            print(f"{method_name}: 数据量={len(method_data)}, 集成SHAP计算完成")
+            print(f"{method_name}: data_size={len(method_data)}, ensemble SHAP calculation completed")
         else:
-            print(f"{method_name}: SHAP计算失败")
+            print(f"{method_name}: SHAP calculation failed")
 
     except Exception as e:
-        print(f"{method_name} SHAP计算错误: {e}")
+        print(f"{method_name} SHAP calculation error: {e}")
         continue
 
-# 创建SHAP结果表格
+# Create SHAP result table
 shap_table_data = []
 for method_name, result in shap_results.items():
     features = result['features']
@@ -268,26 +268,26 @@ if shap_table_data:
     shap_df = pd.DataFrame(shap_table_data)
     output_csv_file = 'deposition_methods_ensemble_shap_active_area_10_100.csv'
     shap_df.to_csv(output_csv_file, index=False, encoding='utf-8-sig')
-    print(f"\n集成模型SHAP分析结果已保存到: {output_csv_file}")
+    print(f"\nEnsemble model SHAP analysis results saved to: {output_csv_file}")
 else:
-    print("\n没有生成SHAP分析结果。")
+    print("\nNo SHAP analysis results generated.")
 
-# ============== 绘图部分 ==============
+# ============== Plotting section ==============
 if shap_results:
     num_methods = len(shap_results)
 
-    # 动态调整图片尺寸
-    fig_width = 6 * num_methods  # 每个子图6英寸宽度
-    fig_height = 8  # 固定高度为8英寸
+    # Dynamically adjust image size
+    fig_width = 6 * num_methods  # 6 inches width per subplot
+    fig_height = 8  # Fixed height of 8 inches
 
-    # 创建图形
+    # Create figure
     fig, axes = plt.subplots(1, num_methods, figsize=(fig_width, fig_height))
 
     if num_methods == 1:
         axes = [axes]
 
-    # 修改：设置颜色为 #a94837 (红色)
-    bar_color = '#a94837'  # 红色
+    # Modification: Set color to #a94837 (red)
+    bar_color = '#a94837'  # Red
 
     for i, (method_name, result) in enumerate(shap_results.items()):
         features = result['features']
@@ -298,23 +298,23 @@ if shap_results:
             features = features[:min_len]
             importances = importances[:min_len]
 
-        # 移除 'Deposition_Method' 特征
+        # Remove 'Deposition_Method' feature
         non_depo_method_mask = np.array(features) != 'Deposition_Method'
 
         if not np.any(non_depo_method_mask):
-            print(f"警告: 移除 'Deposition_Method' 后，{method_name} 没有剩余特征用于绘图。")
+            print(f"Warning: After removing 'Deposition_Method', {method_name} has no remaining features for plotting.")
             continue
 
-        # 筛选特征和重要性
+        # Filter features and importance
         filtered_features = np.array(features)[non_depo_method_mask].tolist()
         filtered_importances = importances[non_depo_method_mask]
 
-        # 替换特征名为别名
+        # Replace feature names with aliases
         aliased_features = []
         for feature in filtered_features:
             aliased_features.append(FEATURE_ALIASES.get(feature, feature))
 
-        # 获取前15个最重要特征
+        # Get top 15 most important features
         num_top_features = min(15, len(aliased_features))
         importance_df = pd.DataFrame({
             'Feature': aliased_features,
@@ -323,56 +323,56 @@ if shap_results:
         }).sort_values('Importance', ascending=False).head(num_top_features)
 
         if importance_df.empty:
-            print(f"警告: {method_name} 没有足够的特征用于绘图。")
+            print(f"Warning: {method_name} has insufficient features for plotting.")
             continue
 
-        # 绘制水平柱状图 - 修改：给每个柱子加上0.8pt的边框
+        # Draw horizontal bar chart - modification: add 0.8pt border to each bar
         ax = axes[i]
         bars = ax.barh(range(len(importance_df)), importance_df['Importance'],
                        color=bar_color, alpha=0.8, edgecolor='black', linewidth=0.8)
 
-        # 设置y轴标签（使用别名）- 修改：加大字体大小
+        # Set y-axis labels (using aliases) - modification: increase font size
         ax.set_yticks(range(len(importance_df)))
         ax.set_yticklabels(importance_df['Feature'], fontsize=12)
 
-        # 在所有子图下方显示x轴标签和刻度值 - 修改：加大字体大小
+        # Display x-axis labels and tick values below all subplots - modification: increase font size
         ax.set_xlabel('mean(|SHAP value|)', fontsize=13)
 
-        # 设置坐标轴刻度方向向里 - 修改：刻度线宽度为0.8pt
+        # Set axis tick direction inward - modification: tick line width 0.8pt
         ax.tick_params(axis='x', direction='in', labelsize=11, width=0.8)
         ax.tick_params(axis='y', direction='in', labelsize=11, width=0.8)
 
-        # 确保x轴刻度值在所有子图下方都显示
+        # Ensure x-axis tick values are displayed below all subplots
         ax.tick_params(axis='x', bottom=True, labelbottom=True)
 
-        # 设置子图标题，显示方法名和数据量信息 - 修改：加大字体大小
+        # Set subplot title, display method name and data size information - modification: increase font size
         ax.set_title(f'{method_name} (n={result["data_size"]})',
                      fontsize=13,pad=10)
 
         ax.invert_yaxis()
 
-        # 去掉网格虚线显示
+        # Remove grid dashed lines display
         ax.grid(False)
 
-        # 修改：将坐标轴边框加粗到0.8磅
+        # Modification: Thicken axis borders to 0.8 points
         for spine in ax.spines.values():
             spine.set_linewidth(0.8)
 
     plt.tight_layout()
 
-    # 检查是否至少有一个子图被绘制
+    # Check if at least one subplot is drawn
     if any(ax.has_data() for ax in axes):
         output_plot_file = 'deposition_methods_ensemble_shap_importance_active_area_10_100_no_depo.tif'
         plt.savefig(output_plot_file, dpi=300, bbox_inches='tight', format='tiff')
-        print(f"集成模型SHAP重要性图已保存到: {output_plot_file}")
+        print(f"Ensemble model SHAP importance chart saved to: {output_plot_file}")
     else:
-        print("没有可绘制的SHAP结果（所有子图均无数据）。")
+        print("No plottable SHAP results (all subplots have no data).")
     plt.close(fig)
 else:
-    print("没有可绘制的SHAP结果。")
+    print("No plottable SHAP results.")
 
-# 显示每种方法的最重要特征
-print("\n=== 各方法最重要特征 (使用集成模型, 10 ≤ Active_Area < 100) ===")
+# Display most important features for each method
+print("\n=== Most important features by method (using ensemble model, 10 ≤ Active_Area < 100) ===")
 for method_name, result in shap_results.items():
     features = result['features']
     importances = result['mean_abs_shap']
@@ -387,9 +387,9 @@ for method_name, result in shap_results.items():
         'Importance': importances
     }).sort_values('Importance', ascending=False).head(10)
 
-    print(f"\n{method_name} (n={result['data_size']}) (使用集成模型):")
+    print(f"\n{method_name} (n={result['data_size']}) (using ensemble model):")
     for _, row in importance_df.iterrows():
         feature_alias = FEATURE_ALIASES.get(row['Feature'], row['Feature'])
         print(f"  {feature_alias}: {row['Importance']:.4f}")
 
-print("\n分析完成！(使用集成模型, 10 ≤ Active_Area < 100)")
+print("\nAnalysis completed! (using ensemble model, 10 ≤ Active_Area < 100)")

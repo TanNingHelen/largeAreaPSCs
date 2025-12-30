@@ -8,10 +8,10 @@ from matplotlib import rcParams
 import matplotlib as mpl
 
 # ============== 配置部分 ==============
-# 字体设置 - 改为 Times New Roman
+
 rcParams['font.family'] = 'Times New Roman'
 rcParams['axes.unicode_minus'] = False
-rcParams.update({'font.size': 10})  # 设置全局字体大小为10
+rcParams.update({'font.size': 10})
 
 # 特征名称映射字典
 FEATURE_ALIASES = {

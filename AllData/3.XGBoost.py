@@ -257,7 +257,7 @@ def main():
         )
 
         log_message(f"\nModel saved to: {MODEL_PATH}")
-        log_message("Feature importance plot saved to: picture_predict/XGB_feature_importance.png")
+
         log_message("Prediction plots saved to:")
         log_message("- img/XGB_PCE_prediction.png (if myscatterplot succeeded)")
         log_message("- picture_predict/XGB_PCE_prediction.png (fallback plot)")

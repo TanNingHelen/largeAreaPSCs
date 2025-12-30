@@ -5,36 +5,34 @@ import re
 from collections import defaultdict
 import warnings
 import joblib
-from sklearn.ensemble import RandomForestRegressor
-import xgboost as xgb
-import lightgbm as lgb
+
 
 warnings.filterwarnings('ignore')
 
 
 def prepare_sample_data(sample_data, mapping_df, historical_data, fixed_bandgap=1.6095):
     """
-    准备样本数据并进行预处理
+    Prepare sample data and perform preprocessing
 
     Parameters:
-    - sample_data: 样本数据字典
-    - mapping_df: 映射数据框
-    - historical_data: 历史数据
-    - fixed_bandgap: 固定的Bandgap值
+    - sample_data: sample data dictionary
+    - mapping_df: mapping dataframe
+    - historical_data: historical data
+    - fixed_bandgap: fixed Bandgap value
     """
-    # 使用固定的Bandgap值
+    # Use fixed Bandgap value
     sample_data['Bandgap'] = fixed_bandgap
-    print(f"✅ 使用固定Bandgap: {sample_data['Bandgap']:.4f} eV")
+    print(f"✅ Using fixed Bandgap: {sample_data['Bandgap']:.4f} eV")
 
-    # 创建新数据的DataFrame
+    # Create DataFrame for new data
     new_sample = pd.DataFrame([sample_data])
 
-    # 移除Perovskite列（因为已经有元素比例和Bandgap）
+    # Remove Perovskite column (since element ratios and Bandgap are already present)
     if 'Perovskite' in new_sample.columns:
         new_sample = new_sample.drop('Perovskite', axis=1)
-        print("✅ 已移除Perovskite列，保留元素比例和Bandgap特征")
+        print("✅ Removed Perovskite column, keeping element ratios and Bandgap features")
 
-    # 应用数值映射
+    # Apply numerical mapping
     categorical_features = [
         'Structure', 'HTL', 'HTL-2', 'HTL_Passivator', 'HTL-Addictive',
         'ETL', 'ETL-2', 'ETL_Passivator', 'ETL-Addictive',
@@ -43,142 +41,142 @@ def prepare_sample_data(sample_data, mapping_df, historical_data, fixed_bandgap=
         'Antisolvent', 'Type', 'brand'
     ]
 
-    print("\n🔧 开始特征编码...")
+    print("\n🔧 Starting feature encoding...")
 
     for feature in categorical_features:
         if feature in new_sample.columns:
-            # 获取该特征的映射关系
+            # Get mapping relationship for this feature
             feature_mapping = mapping_df[mapping_df['Feature'] == feature]
 
             if len(feature_mapping) > 0:
-                # 创建映射字典
+                # Create mapping dictionary
                 mapping_dict = dict(zip(feature_mapping['Original'], feature_mapping['Encoded']))
 
-                # 应用映射
+                # Apply mapping
                 original_value = new_sample[feature].iloc[0]
 
-                # 处理空值
+                # Handle null values
                 if original_value == '' or pd.isna(original_value):
-                    # 查找空值的映射
+                    # Find mapping for null values
                     empty_mapping = feature_mapping[feature_mapping['Original'].isna()]
                     if len(empty_mapping) > 0:
                         encoded_value = empty_mapping['Encoded'].iloc[0]
                     else:
-                        # 如果没有空值映射，使用0
+                        # If no null mapping, use 0
                         encoded_value = 0
                 else:
-                    # 正常映射
+                    # Normal mapping
                     encoded_value = mapping_dict.get(original_value, 0)
 
                 new_sample[feature] = encoded_value
                 print(f"   {feature}: '{original_value}' -> {encoded_value}")
             else:
-                print(f"   ⚠️  特征 '{feature}' 在映射文件中未找到，使用默认值0")
+                print(f"   ⚠️  Feature '{feature}' not found in mapping file, using default value 0")
                 new_sample[feature] = 0
 
-    # 确保所有列都是数值类型
+    # Ensure all columns are numeric type
     for col in new_sample.columns:
         if new_sample[col].dtype == 'object':
             try:
                 new_sample[col] = pd.to_numeric(new_sample[col])
             except:
-                print(f"   ⚠️  无法将列 '{col}' 转换为数值类型，使用0")
+                print(f"   ⚠️  Cannot convert column '{col}' to numeric type, using 0")
                 new_sample[col] = 0
 
-    # 确保特征顺序与训练时一致
+    # Ensure feature order matches training
     try:
-        # 获取历史数据的特征顺序（排除目标变量PCE）
+        # Get feature order from historical data (excluding target variable PCE)
         expected_features = [col for col in historical_data.columns if col != 'PCE']
 
-        print(f"\n📋 期望的特征数量: {len(expected_features)}")
+        print(f"\n📋 Expected feature count: {len(expected_features)}")
 
-        # 检查缺失和多余的特征
+        # Check for missing and extra features
         missing_features = set(expected_features) - set(new_sample.columns)
         extra_features = set(new_sample.columns) - set(expected_features)
 
-        print(f"🔍 特征匹配检查:")
-        print(f"   缺失特征: {missing_features}")
-        print(f"   多余特征: {extra_features}")
+        print(f"🔍 Feature matching check:")
+        print(f"   Missing features: {missing_features}")
+        print(f"   Extra features: {extra_features}")
 
-        # 添加缺失特征
+        # Add missing features
         for feature in missing_features:
-            print(f"   ➕ 添加缺失特征: {feature} = 0")
+            print(f"   ➕ Adding missing feature: {feature} = 0")
             new_sample[feature] = 0
 
-        # 移除多余特征
+        # Remove extra features
         if extra_features:
-            print(f"   ➖ 移除多余特征: {extra_features}")
+            print(f"   ➖ Removing extra features: {extra_features}")
             new_sample = new_sample.drop(columns=list(extra_features))
 
-        # 重新排列列顺序
+        # Reorder columns
         new_sample = new_sample[expected_features]
-        print(f"   ✅ 特征顺序已调整，当前特征数量: {len(new_sample.columns)}")
+        print(f"   ✅ Feature order adjusted, current feature count: {len(new_sample.columns)}")
 
     except Exception as e:
-        print(f"⚠️  特征顺序调整失败: {e}")
+        print(f"⚠️  Feature order adjustment failed: {e}")
 
     return new_sample
 
 
 def predict_pce_for_first_sample():
     """
-    使用三个不同的模型分别预测第一组原始数据的PCE
+    Use three different models to predict PCE for the first raw dataset separately
     """
-    # 1. 加载三个PCE预测模型
+    # 1. Load three PCE prediction models
     models = {}
     try:
-        # 加载随机森林模型
+        # Load Random Forest model
         rf_model = joblib.load('models/best_randomforest_model.pkl')
         models['Random Forest'] = rf_model
-        print("✅ 随机森林模型加载成功")
+        print("✅ Random Forest model loaded successfully")
     except Exception as e:
-        print(f"❌ 随机森林模型加载失败: {e}")
+        print(f"❌ Random Forest model loading failed: {e}")
         return None
 
     try:
-        # 加载LightGBM模型
+        # Load LightGBM model
         lgb_model = joblib.load('models/best_lgbm_model.pkl')
         models['LightGBM'] = lgb_model
-        print("✅ LightGBM模型加载成功")
+        print("✅ LightGBM model loaded successfully")
     except Exception as e:
-        print(f"❌ LightGBM模型加载失败: {e}")
+        print(f"❌ LightGBM model loading failed: {e}")
         return None
 
     try:
-        # 加载XGBoost模型
+        # Load XGBoost model
         xgb_model = joblib.load('models/best_xgboost_model.pkl')
         models['XGBoost'] = xgb_model
-        print("✅ XGBoost模型加载成功")
+        print("✅ XGBoost model loaded successfully")
     except Exception as e:
-        print(f"❌ XGBoost模型加载失败: {e}")
+        print(f"❌ XGBoost model loading failed: {e}")
         return None
 
-    print(f"📋 加载了 {len(models)} 个模型")
+    print(f"📋 Loaded {len(models)} models")
 
-    # 2. 加载历史数据以获取特征结构
+    # 2. Load historical data to get feature structure
     try:
         historical_data = pd.read_excel('FinalData.xlsx')
-        print("✅ 历史数据加载成功")
-        print(f"历史数据特征数量: {len(historical_data.columns)}")
+        print("✅ Historical data loaded successfully")
+        print(f"Historical data feature count: {len(historical_data.columns)}")
     except Exception as e:
-        print(f"❌ 历史数据加载失败: {e}")
+        print(f"❌ Historical data loading failed: {e}")
         return None
 
-    # 3. 加载映射文件
+    # 3. Load mapping file
     try:
         mapping_df = pd.read_csv('label_mappings/full_mapping_summary.csv')
-        print("✅ 映射文件加载成功")
+        print("✅ Mapping file loaded successfully")
     except Exception as e:
-        print(f"❌ 映射文件加载失败: {e}")
+        print(f"❌ Mapping file loading failed: {e}")
         return None
 
-    # 4. 准备第一组数据（原始数据）
+    # 4. Prepare first dataset (raw data)
     sample1_data = {
         'Structure': 'p-i-n',
         'HTL': 'NiOx',
         'HTL-2': 'Me-4PACz',
         'HTL_Passivator': '',
-        'HTL-Addictive': 'DMPU',
+        'HTL-Addictive': 'DMPU+PEAI',
         'ETL': 'C60',
         'ETL-2': 'SnO2',
         'ETL_Passivator': '',
@@ -230,79 +228,79 @@ def predict_pce_for_first_sample():
         'Br': 0.96,
         'Pb': 1.0,
         'Cl': 0,
-        'Bandgap': 1.6095  # 固定Bandgap值
+        'Bandgap': 1.5284  # Fixed Bandgap value
     }
 
-    # 存储所有预测结果
+    # Store all prediction results
     all_predictions = {}
 
     print("=" * 60)
-    print("🎯 第一组数据预测 (原始配置)")
+    print("🎯 First dataset prediction (original configuration)")
     print("=" * 60)
-    print("配置: HTL = NiOx, HTL-2 = Me-4PACz, HTL-Addictive = DMPU, ETL_Passivator = 空值")
-    print(f"使用固定Bandgap值: 1.6095 eV")
+    print("Configuration: HTL = NiOx, HTL-2 = Me-4PACz, HTL-Addictive = DMPU, ETL_Passivator = null")
+    print(f"Using fixed Bandgap value: 1.6095 eV")
 
-    # 准备第一组数据
+    # Prepare first dataset
     sample1_processed = prepare_sample_data(sample1_data, mapping_df, historical_data, fixed_bandgap=1.6095)
 
-    # 分别用三个模型进行预测
+    # Predict with three models separately
     for model_name, model in models.items():
         try:
             pce_prediction = model.predict(sample1_processed)[0]
             all_predictions[model_name] = pce_prediction
-            print(f"\n📊 {model_name} 预测结果:")
-            print(f"   预测PCE: {pce_prediction:.2f} %")
+            print(f"\n📊 {model_name} prediction results:")
+            print(f"   Predicted PCE: {pce_prediction:.2f} %")
 
-            # 提供性能评估
+            # Provide performance evaluation
             if pce_prediction > 20:
-                print("   ⭐ 优秀性能!")
+                print("   ⭐ Excellent performance!")
             elif pce_prediction > 18:
-                print("   👍 良好性能!")
+                print("   👍 Good performance!")
             else:
-                print("   💡 建议进一步优化工艺参数!")
+                print("   💡 Suggested to further optimize process parameters!")
         except Exception as e:
-            print(f"\n❌ {model_name} 预测失败: {e}")
+            print(f"\n❌ {model_name} prediction failed: {e}")
             all_predictions[model_name] = None
 
     return all_predictions
 
 
-# 主函数
+# Main function
 if __name__ == "__main__":
-    print("=== 钙钛矿太阳能电池PCE预测系统 ===")
-    print("使用三个模型分别预测第一组原始数据")
-    print("配置: HTL = NiOx, HTL-2 = Me-4PACz, HTL-Addictive = DMPU, ETL_Passivator = 空值")
-    print("使用固定Bandgap值: 1.6095 eV")
-    print("预测模型: Random Forest, LightGBM, XGBoost")
+    print("=== Perovskite Solar Cell PCE Prediction System ===")
+    print("Using three models to predict first raw dataset separately")
+    print("Configuration: HTL = NiOx, HTL-2 = Me-4PACz, HTL-Addictive = DMPU, ETL_Passivator = null")
+    print("Using fixed Bandgap value: 1.5284 eV")
+    print("Prediction models: Random Forest, LightGBM, XGBoost")
     print("=" * 60)
 
-    # 预测第一组数据的PCE
+    # Predict PCE for first dataset
     predictions = predict_pce_for_first_sample()
 
     if predictions:
         print("\n" + "=" * 60)
-        print("📊 所有模型预测结果汇总")
+        print("📊 All model prediction results summary")
         print("=" * 60)
 
         for model_name, pce in predictions.items():
             if pce is not None:
                 print(f"{model_name}: {pce:.2f} %")
             else:
-                print(f"{model_name}: 预测失败")
+                print(f"{model_name}: Prediction failed")
 
         print("\n" + "=" * 60)
-        print("📈 预测结果统计")
+        print("📈 Prediction results statistics")
         print("=" * 60)
 
-        # 计算统计信息
+        # Calculate statistics
         valid_predictions = [p for p in predictions.values() if p is not None]
         if valid_predictions:
-            print(f"预测模型数量: {len(valid_predictions)}")
-            print(f"平均预测PCE: {np.mean(valid_predictions):.2f} %")
-            print(f"最高预测PCE: {max(valid_predictions):.2f} %")
-            print(f"最低预测PCE: {min(valid_predictions):.2f} %")
-            print(f"预测PCE范围: {max(valid_predictions) - min(valid_predictions):.2f} %")
+            print(f"Number of prediction models: {len(valid_predictions)}")
+            print(f"Average predicted PCE: {np.mean(valid_predictions):.2f} %")
+            print(f"Highest predicted PCE: {max(valid_predictions):.2f} %")
+            print(f"Lowest predicted PCE: {min(valid_predictions):.2f} %")
+            print(f"Predicted PCE range: {max(valid_predictions) - min(valid_predictions):.2f} %")
         else:
-            print("所有模型预测都失败了")
+            print("All model predictions failed")
     else:
-        print("预测失败，请检查模型和数据")
+        print("Prediction failed, please check models and data")

@@ -17,9 +17,7 @@ def calc_corr(a, b):
     return corr_factor
 
 
-
-
-#用来绘制带隙预测
+# Used for bandgap prediction plotting
 def letsplot(train, trainpre, test, testpre, modelname='RF', target='Bandgap', save_fig=True, save_path=None):
     fontsize = 12
     plt.figure(figsize=(3, 3))
@@ -28,50 +26,51 @@ def letsplot(train, trainpre, test, testpre, modelname='RF', target='Bandgap', s
     plt.rc('ytick', labelsize=fontsize)
     plt.rcParams['font.family'] = "Times New Roman"
 
-    # 计算R2值
+    # Calculate R2 values
     train_r2 = metrics.r2_score(train, trainpre)
     test_r2 = metrics.r2_score(test, testpre)
 
-    a = plt.scatter(train, trainpre, s=25, c="#4d8f74")  # 修改训练集颜色,绿色
+    a = plt.scatter(train, trainpre, s=25, c="#4d8f74")  # Modify training set color, green
     plt.plot([train.min(), train.max()], [train.min(), train.max()], 'k:', lw=1.5)
     plt.xlabel('Actual Bandgap (eV)', fontsize=fontsize)
     plt.ylabel('Predicted Bandgap (eV)', fontsize=fontsize)
     plt.tick_params(direction='in')
     # plt.title('{} model for {} prediction'.format(modelname, target), fontsize=fontsize)
 
-    b = plt.scatter(test, testpre, s=25, c="#a94837", marker='D')  # 修改测试集颜色,红色
+    b = plt.scatter(test, testpre, s=25, c="#a94837", marker='D')  # Modify test set color, red
 
-    # 去掉图例边框
+    # Remove legend border
     plt.legend((a, b), ('Train', 'Test'), fontsize=fontsize - 1,
                handletextpad=0.1, borderpad=0.1, frameon=False)
 
-    # 设置x轴和y轴以0.5为刻度
-    # 首先确定合适的刻度范围
+    # Set x-axis and y-axis with 0.5 intervals
+    # First determine appropriate tick range
     all_values = np.concatenate([train, trainpre, test, testpre])
-    min_val = np.floor(all_values.min() * 2) / 2  # 向下取整到0.5的倍数
-    max_val = np.ceil(all_values.max() * 2) / 2  # 向上取整到0.5的倍数
+    min_val = np.floor(all_values.min() * 2) / 2  # Round down to multiples of 0.5
+    max_val = np.ceil(all_values.max() * 2) / 2  # Round up to multiples of 0.5
 
-    # 生成0.5为步长的刻度
+    # Generate ticks with 0.5 interval
     ticks = np.arange(min_val, max_val + 0.5, 0.5)
     plt.xticks(ticks)
     plt.yticks(ticks)
 
-    # 确保x轴和y轴范围一致
+    # Ensure x-axis and y-axis ranges are consistent
     plt.xlim(min_val, max_val)
     plt.ylim(min_val, max_val)
     plt.tight_layout()
-    # 保存图片部分
+
+    # Save image section
     if save_fig:
         if save_path is None:
-            # 如果没有指定路径，使用默认文件名
+            # If no path specified, use default filename
             save_path = f"{modelname}_{target}_prediction.tif"
 
-        # 确保目录存在
+        # Ensure directory exists
         os.makedirs(os.path.dirname(save_path) if os.path.dirname(save_path) else '.', exist_ok=True)
 
-        # 保存为高清TIFF格式，600 DPI
+        # Save as high-quality TIFF format, 600 DPI
         plt.savefig(save_path, dpi=600, format='tiff', bbox_inches='tight')
-        print(f"✅ 图片已保存为: {save_path}")
+        print(f"✅ Image saved as: {save_path}")
 
     plt.show()
 
@@ -106,7 +105,7 @@ def find_outliers(model, X, y, sigma=2):
     print('mean of residuals', mean_resid)
     print('std of residuals', std_resid)
     print('------------------------------------------')
-    print(f'find {len(outliers)}', 'outliers： ')
+    print(f'find {len(outliers)}', 'outliers: ')
     print(outliers.tolist())
 
     plt.figure(figsize=(15, 5))
@@ -116,14 +115,14 @@ def find_outliers(model, X, y, sigma=2):
     plt.plot(y.loc[outliers], y_pred.loc[outliers], 'ro')
     plt.legend(['Accepted', 'Outliers'])
     plt.xlabel('y')
-    plt.ylabel('y_pred');
+    plt.ylabel('y_pred')
 
     ax_132 = plt.subplot(1, 3, 2)
     plt.plot(y, y - y_pred, '.')
     plt.plot(y.loc[outliers], y.loc[outliers] - y_pred.loc[outliers], 'ro')
     plt.legend(['Accepted', 'Outliers'])
     plt.xlabel('y')
-    plt.ylabel('y - y_pred');
+    plt.ylabel('y - y_pred')
 
     ax_133 = plt.subplot(1, 3, 3)
     z.plot.hist(bins=50, ax=ax_133)
@@ -135,7 +134,7 @@ def find_outliers(model, X, y, sigma=2):
 
 
 def getdata(y_train, y_train_hat, y_test, y_test_hat):
-    """获取用于绘图的数据"""
+    """Get data for plotting"""
     train_df = pd.DataFrame({
         'Actual PCE (%)': y_train,
         'Predicted PCE (%)': y_train_hat,
@@ -153,15 +152,15 @@ def getdata(y_train, y_train_hat, y_test, y_test_hat):
 
 def myscatterplot(y_train, y_train_hat, y_test, y_test_hat, modelname="ML", target="PCE", plot_height=8, savepic=False,
                   picname='picname'):
-    """绘制散点图，R和R²使用斜体显示"""
+    """Draw scatter plot, R and R² displayed in italic"""
 
-    # 直接使用数据，不调用外部函数
+    # Use data directly, without calling external functions
     train_actual = y_train.flatten() if hasattr(y_train, 'flatten') else y_train
     train_pred = y_train_hat.flatten() if hasattr(y_train_hat, 'flatten') else y_train_hat
     test_actual = y_test.flatten() if hasattr(y_test, 'flatten') else y_test
     test_pred = y_test_hat.flatten() if hasattr(y_test_hat, 'flatten') else y_test_hat
 
-    # 创建DataFrame
+    # Create DataFrame
     train_df = pd.DataFrame({
         'Actual': train_actual,
         'Predicted': train_pred,
@@ -177,18 +176,18 @@ def myscatterplot(y_train, y_train_hat, y_test, y_test_hat, modelname="ML", targ
     data = pd.concat([train_df, test_df], ignore_index=True)
 
     plot_aspect = 1.2
-    plot_palette = ["#4d8f74", "#a94837"]  # 绿色和红色
+    plot_palette = ["#4d8f74", "#a94837"]  # Green and red
     face_color = "white"
     spine_color = "white"
     label_size = 15
 
     fig, ax = plt.subplots(figsize=(plot_height, plot_height), dpi=300)
 
-    # 绘制散点图
+    # Draw scatter plot
     sns.scatterplot(x='Actual', y='Predicted', hue='Dataset', data=data, s=90, alpha=.65,
                     edgecolor='black', palette=plot_palette, ax=ax)
 
-    # 设置图表属性
+    # Set chart properties
     ax.set_facecolor(face_color)
     for spine in ['top', 'bottom', 'left', 'right']:
         ax.spines[spine].set_color(spine_color)
@@ -201,17 +200,17 @@ def myscatterplot(y_train, y_train_hat, y_test, y_test_hat, modelname="ML", targ
     ax.set_title(f"{modelname} for {target} prediction",
                  fontdict={"size": 23, "color": "k", 'family': 'Times New Roman'})
 
-    # 修复：使用正确的大写PCE，不调用capitalize()
+    # Fix: Use correct uppercase PCE, do not call capitalize()
     ax.set_xlabel('Actual PCE (%)', fontdict={'fontsize': 25, 'family': 'Times New Roman'})
     ax.set_ylabel('Predicted PCE (%)', fontdict={'fontsize': 25, 'family': 'Times New Roman'})
 
-    # 添加对角线
+    # Add diagonal line
     ax.plot([-0.5, 25.5], [-0.5, 25.5], linestyle='--', color='gray', linewidth=2)
 
-    # 添加图例
+    # Add legend
     plt.legend(loc='upper left', fontsize=16)
 
-    # 计算和显示指标
+    # Calculate and display metrics
     train_r2 = r2_score(train_actual, train_pred)
     test_corr = np.corrcoef(test_actual, test_pred)[0, 1]
     test_r2 = r2_score(test_actual, test_pred)
@@ -219,14 +218,14 @@ def myscatterplot(y_train, y_train_hat, y_test, y_test_hat, modelname="ML", targ
     train_mae = mean_absolute_error(train_actual, train_pred)
     test_mae = mean_absolute_error(test_actual, test_pred)
 
-    # 使用mathtext格式显示斜体R和R²
-    # 注意：R用$R$表示斜体，R²用$R^2$表示
-    train_text1 = 'Train $R^2$: {:.4f}'.format(train_r2)  # R²斜体
-    test_text1 = 'Test $R$: {:.4f}'.format(test_corr)  # R斜体
-    test_text2 = 'Test $R^2$: {:.4f}'.format(test_r2)  # R²斜体
+    # Use mathtext format to display italic R and R²
+    # Note: R is displayed as $R$ for italic, R² is displayed as $R^2$
+    train_text1 = 'Train $R^2$: {:.4f}'.format(train_r2)  # R² italic
+    test_text1 = 'Test $R$: {:.4f}'.format(test_corr)  # R italic
+    test_text2 = 'Test $R^2$: {:.4f}'.format(test_r2)  # R² italic
     test_rmse_text = 'Test RMSE: {:.3f}'.format(test_rmse)
 
-    # 使用MathText渲染，确保数学符号正确显示
+    # Use MathText rendering to ensure mathematical symbols are displayed correctly
     ax.text(0.67, 0.25, train_text1, transform=ax.transAxes, fontsize=15, va='top', ha='left',
             fontfamily='Times New Roman')
     ax.text(0.67, 0.19, test_text1, transform=ax.transAxes, fontsize=15, va='top', ha='left',
@@ -236,21 +235,21 @@ def myscatterplot(y_train, y_train_hat, y_test, y_test_hat, modelname="ML", targ
     ax.text(0.67, 0.07, test_rmse_text, transform=ax.transAxes, fontsize=15, va='top', ha='left',
             fontfamily='Times New Roman')
 
-    # 保存图片
+    # Save image
     if savepic:
         os.makedirs('./img', exist_ok=True)
 
-        # 保存PNG格式（保持原有功能）
+        # Save PNG format (maintain original functionality)
         plt.savefig(f'./img/{picname}.png', bbox_inches='tight', dpi=300, transparent=True)
-        print(f"✅ PNG图片已保存到: ./img/{picname}.png")
+        print(f"✅ PNG image saved to: ./img/{picname}.png")
 
-        # 新增：同时保存TIFF格式
+        # New: Save TIFF format simultaneously
         plt.savefig(f'./img/{picname}.tiff', bbox_inches='tight', dpi=300, format='tiff',
                     facecolor='white', edgecolor='none')
-        print(f"✅ TIFF图片已保存到: ./img/{picname}.tiff")
+        print(f"✅ TIFF image saved to: ./img/{picname}.tiff")
 
-    # 打印指标
-    # print(f"\n📊 模型性能指标:")
+    # Print metrics
+    # print(f"\n📊 Model performance metrics:")
     # print(f"Train R²: {train_r2:.4f}")
     # print(f"Train MAE: {train_mae:.4f}")
     # print(f"Train RMSE: {np.sqrt(mean_squared_error(train_actual, train_pred)):.4f}")
@@ -262,14 +261,10 @@ def myscatterplot(y_train, y_train_hat, y_test, y_test_hat, modelname="ML", targ
     plt.show()
 
 
-# 如果你需要完全兼容原来的调用方式，但使用新的绘图函数，这里是一个增强版本
+# Use new plotting function, here is an enhanced version
 def myscatterplot_enhanced(y_train, y_train_hat, y_test, y_test_hat, modelname="ML", target="PCE", plot_height=8,
-                           savepic=False,
-                           picname='picname'):
-
-
-
-    # 数据展平处理
+                           savepic=False, picname='picname'):
+    # Data flattening processing
     def flatten_data(data):
         if hasattr(data, 'flatten'):
             return data.flatten()
@@ -283,28 +278,28 @@ def myscatterplot_enhanced(y_train, y_train_hat, y_test, y_test_hat, modelname="
     y_test_flat = flatten_data(y_test)
     y_test_hat_flat = flatten_data(y_test_hat)
 
-    # 创建数据框
+    # Create dataframe
     data = pd.DataFrame({
         'Actual PCE (%)': np.concatenate([y_train_flat, y_test_flat]),
         'Predicted PCE (%)': np.concatenate([y_train_hat_flat, y_test_hat_flat]),
         'type': ['Train'] * len(y_train_flat) + ['Test'] * len(y_test_flat)
     })
 
-    print(f"📊 数据统计:")
-    print(f"  训练集样本数: {len(y_train_flat)}")
-    print(f"  测试集样本数: {len(y_test_flat)}")
-    print(f"  实际PCE范围: [{data['Actual PCE (%)'].min():.2f}, {data['Actual PCE (%)'].max():.2f}]")
-    print(f"  预测PCE范围: [{data['Predicted PCE (%)'].min():.2f}, {data['Predicted PCE (%)'].max():.2f}]")
+    print(f"📊 Data statistics:")
+    print(f"  Training set samples: {len(y_train_flat)}")
+    print(f"  Test set samples: {len(y_test_flat)}")
+    print(f"  Actual PCE range: [{data['Actual PCE (%)'].min():.2f}, {data['Actual PCE (%)'].max():.2f}]")
+    print(f"  Predicted PCE range: [{data['Predicted PCE (%)'].min():.2f}, {data['Predicted PCE (%)'].max():.2f}]")
 
-    # 设置样式
+    # Set style
     sns.set_style("whitegrid", {'grid.linestyle': '--', 'grid.alpha': 0.6})
     plt.rcParams['font.family'] = 'Times New Roman'
-    plt.rcParams['mathtext.fontset'] = 'cm'  # 使用Computer Modern字体渲染数学符号
+    plt.rcParams['mathtext.fontset'] = 'cm'  # Use Computer Modern font to render mathematical symbols
 
-    # 创建图形
+    # Create figure
     fig, ax = plt.subplots(figsize=(plot_height, plot_height), dpi=300)
 
-    # 绘制散点图
+    # Draw scatter plot
     sns.scatterplot(
         x='Actual PCE (%)',
         y='Predicted PCE (%)',
@@ -318,36 +313,36 @@ def myscatterplot_enhanced(y_train, y_train_hat, y_test, y_test_hat, modelname="
         ax=ax
     )
 
-    # 设置坐标轴
+    # Set axes
     ax.set_xlabel('Actual PCE (%)', fontsize=25, fontname='Times New Roman')
     ax.set_ylabel('Predicted PCE (%)', fontsize=25, fontname='Times New Roman')
     ax.set_xlim(-0.5, 25.5)
     ax.set_ylim(-0.5, 25.5)
 
-    # 设置刻度
+    # Set ticks
     ax.tick_params(axis='both', which='major', labelsize=15, direction='in')
 
-    # 设置标题
+    # Set title
     ax.set_title(f"{modelname} for {target} Prediction",
                  fontsize=23, fontname='Times New Roman', pad=20)
 
-    # 添加对角线
+    # Add diagonal line
     ax.plot([-0.5, 25.5], [-0.5, 25.5], linestyle='--', color='gray', linewidth=2, alpha=0.8)
 
-    # 计算指标
+    # Calculate metrics
     train_r2 = r2_score(y_train_flat, y_train_hat_flat)
     test_r2 = r2_score(y_test_flat, y_test_hat_flat)
     test_corr = np.corrcoef(y_test_flat, y_test_hat_flat)[0, 1]
     test_rmse = np.sqrt(mean_squared_error(y_test_flat, y_test_hat_flat))
 
-    # 使用MathText渲染斜体R和R²
-    # 注意：$R$ 表示斜体R，$R^2$ 表示斜体R²
+    # Use MathText to render italic R and R²
+    # Note: $R$ for italic R, $R^2$ for italic R²
     train_text = f'Train $R^2$ = {train_r2:.4f}'
     test_r_text = f'Test $R$ = {test_corr:.4f}'
     test_r2_text = f'Test $R^2$ = {test_r2:.4f}'
     test_rmse_text = f'Test RMSE = {test_rmse:.3f}'
 
-    # 添加指标文本
+    # Add metrics text
     ax.text(0.65, 0.25, train_text, transform=ax.transAxes, fontsize=15,
             va='top', ha='left', fontname='Times New Roman')
     ax.text(0.65, 0.20, test_r_text, transform=ax.transAxes, fontsize=15,
@@ -357,25 +352,25 @@ def myscatterplot_enhanced(y_train, y_train_hat, y_test, y_test_hat, modelname="
     ax.text(0.65, 0.10, test_rmse_text, transform=ax.transAxes, fontsize=15,
             va='top', ha='left', fontname='Times New Roman')
 
-    # 调整图例
+    # Adjust legend
     ax.legend(title='Dataset', title_fontsize=14, fontsize=13, loc='upper left')
 
-    # 设置背景颜色
+    # Set background color
     ax.set_facecolor('white')
 
-    # 调整边框
+    # Adjust borders
     for spine in ax.spines.values():
         spine.set_color('black')
         spine.set_linewidth(1)
 
-    # 保存图片
+    # Save image
     if savepic:
         os.makedirs('./img', exist_ok=True)
         plt.savefig(f'./img/{picname}.png', bbox_inches='tight', dpi=300, facecolor='white', edgecolor='none')
-        print(f"✅ 图片已保存到: ./img/{picname}.png")
+        print(f"✅ Image saved to: ./img/{picname}.png")
 
-    # 打印详细指标
-    print(f"\n📈 详细性能指标:")
+    # Print detailed metrics
+    print(f"\n📈 Detailed performance metrics:")
     print(f"  Train R²: {train_r2:.4f}")
     print(f"  Train MAE: {mean_absolute_error(y_train_flat, y_train_hat_flat):.4f}")
     print(f"  Train RMSE: {np.sqrt(mean_squared_error(y_train_flat, y_train_hat_flat)):.4f}")
@@ -386,6 +381,7 @@ def myscatterplot_enhanced(y_train, y_train_hat, y_test, y_test_hat, modelname="
 
     plt.tight_layout()
     plt.show()
+
 
 def save_plot_data(y_train, y_train_hat, y_test, y_test_hat, savename):
     data = {'y_train': y_train,
@@ -410,6 +406,3 @@ def save_arrays_with_nan(y_train, y_train_hat, y_test, y_test_hat, savename):
                        'y_test': filled_y_test,
                        'y_test_predict': filled_y_test_hat})
     df.to_csv('./img/{}.csv'.format(savename), index=False)
-
-
-

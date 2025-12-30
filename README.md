@@ -1,34 +1,69 @@
-# h1
-## h2
-### h3 h4
-
-# h1 ML_for_Perovskite_Laser_Scribing/
-
+# ML_for_Perovskite_Laser_Scribing/
+## File tree
 ```text
 ML_for_Perovskite_Laser_Scribing/
-├── data/                           # 数据目录
-│   ├── raw/                        # 原始收集数据
-│   ├── processed/                  # 清洗和特征工程后的数据
-│   └── dataset_description.md      # 数据集详细说明
-├── src/                            # 源代码目录
-│   ├── 01_data_preprocessing.py    # 数据清洗、编码、缺失值处理
-│   ├── 02_feature_engineering.py   # 特征构建与计算
-│   ├── 03_model_training.py        # 模型训练与超参数优化
-│   ├── 04_model_evaluation.py      # 模型评估与可视化
-│   ├── 05_shap_analysis.py         # SHAP可解释性分析
-│   ├── 06_parameter_optimization.py # 参数优化（子模块宽度、激光参数）
-│   └── utils.py                    # 通用工具函数
-├── notebooks/                      # Jupyter Notebook分析
-│   ├── 01_EDA.ipynb                # 探索性数据分析
-│   └── 02_Laser_Parameter_Analysis.ipynb # 激光参数深入分析
-├── configs/                        # 配置文件
-│   ├── hyperparameters.yaml        # 模型超参数配置
-│   └── paths.yaml                  # 文件路径配置
-├── results/                        # 输出结果
-│   ├── figures/                    # 生成的所有图表
-│   ├── tables/                     # 性能表格
-│   └── models/                     # 保存的模型文件
-├── requirements.txt                # Python依赖包列表
-├── run_pipeline.py                 # 主运行脚本（一键复现）
+├── EchingData/                             # laser scribing sub-dataset
+│   ├── 01_data_preprocessing.py            # Data cleaning and missing value handling
+│   ├── GeneralNullFilled.xlsx              # The data after missing value imputation (excluding GFF)
+│   ├── 02_Column_Splitting.py              # Perovskite chemical formula ratio extraction
+│   ├── perovskite_element_ratios.xlsx      # Data after extraction of perovskite component chemical formulas
+│   ├── BandgapPredict.ipynb                # Predict Bandgap
+│   ├── BandgapDS.xlsx                      # Source data for training the bandgap prediction model
+│   ├── BandgapDone.xlsx                    # Data with completed bandgap predictions
+│   ├── 03_Preprocessing.py                 # Impute missing GFF values to form the final dataset
+│   ├── FinalData.xlsx                      # Final data (laser scribing sub-dataset)
+│   ├── CatBoost.py                         # CatBoost model training
+│   ├── XGBoost.py                          # XGBoost model training
+│   ├── LGBM.py                             # LightGBM model training
+│   ├── RandomForest.py                     # XGBoost model training
+│   ├── label_mappings/                     # Store the mapping table for categorical variables.
+│   ├── models/                             # Store model files
+│       ├── best_catboost_model.cbm         # Store best CatBoost Model
+│       ├── best_lgbm_model.pkl             # Store best LGBM Model  
+│       ├── best_randomforest_model.pkl     # Store best RF Model
+│       ├── best_xgboost_model.pkl          # Store best XGBoost Model 
+│       ├── best_catboost_bandgap.cbm       # Store best CatBoost Model for bandgap prediction
+│   ├── img/                                # Store the scatter plot of predicted vs. actual PCE after model training
+│   ├── catboost+shap.py                    # Use catboost for shap
+│   ├── catboost_Bandgap.py                 # CatBoost training for bandgap prediction
+│   ├── catboost+predict.py                 # Use the existing CatBoost model to predict the PCE of a set of experiments
+│   ├── 3ModelPredict.py                    # Use the existing RF,LGBM,XGBOost models to predict the PCE of a set of experiments
+│   ├── submoduleWidth/                     # Store data related to submodule width prediction.
+│       ├── subwidth.ipynb                  # Find best submodule width
+│       ├── subcell.xlsx                    # Submodule width data collected from the literature   
+│   ├── pinchangefrekencyPredictMore.py     # Predict the optimal dead-zone width range and generate corresponding laser parameter combinations
+│   ├── letsplotT.py                        # Used to store utility functions.                    
+├── AllData/                                # full dataset
+│   ├── FinalDataAll.xlsx                   # Final data (full dataset) 
+│   ├── 1.GPR.py                            # GPR model training
+│   ├── 2.RandomForest.py                   # RF model training
+│   ├── 3.XGBoost.py                        # XGBoost model training
+│   ├── 4.CatBoost.py                       # CatBoost model training
+│   ├── 5.LGBM.py                           # LightGBM model training
+│   ├── 6.MLP.py                            # MLP model training
+│   ├── 7.LinearRegression.py               # LR model training
+│   ├── 8.SVR.py                            # SVR model training
+│   ├── 9.DT.py                             # DT model training
+│   ├── models/                             # Store model files
+│   ├── deposhap<10.py                      # Importance distribution of the three mainstream deposition methods on small-area data.
+│   ├── deposhap10-100.py                   # Importance distribution of the three mainstream deposition methods on medium-area data.
+│   ├── deposhap>100.py                     # Importance distribution of the three mainstream deposition methods on large-area data.
 └── README.md                       # 本文件
+```
+
+## Version Notes
+```text
+Python:3.12.2
+catboost:1.2.8
+joblib:1.4.2
+lightgbm:4.6.0
+matplotlib:3.10.3
+numpy: 1.26.4
+pandas: 2.2.3
+scipy: 1.13.1
+seaborn: 0.13.2
+shap: 0.48.0
+sklearn: 1.5.1
+tqdm: 4.66.5
+xgboost: 3.0.2
 ```
